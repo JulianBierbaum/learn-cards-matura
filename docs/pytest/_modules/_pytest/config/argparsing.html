@@ -1,0 +1,866 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><link rel="search" title="Search" href="../../../search.html">
+        <link rel="canonical" href="https://docs.pytest.org/en/stable/_modules/_pytest/config/argparsing.html">
+        <link rel="prefetch" href="../../../_static/pytest1.png" as="image">
+
+    <link rel="shortcut icon" href="../../../_static/favicon.png"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>_pytest.config.argparsing - pytest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments_pytest.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pytest-custom.css?v=eb7c59a4" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">pytest documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../_static/pytest1.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started.html">Get Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../how-to/index.html">How-to guides</a><input aria-label="Toggle navigation of How-to guides" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/usage.html">How to invoke pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/assert.html">How to write and report assertions in tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/fixtures.html">How to use fixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/mark.html">How to mark test functions with attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/parametrize.html">How to parametrize fixtures and test functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/subtests.html">How to use subtests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/tmp_path.html">How to use temporary directories and files in tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/monkeypatch.html">How to monkeypatch/mock modules and environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/doctest.html">How to run doctests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/cache.html">How to re-run failed tests and maintain state between test runs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/failures.html">How to handle test failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/output.html">Managing pytest’s output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/logging.html">How to manage logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/capture-stdout-stderr.html">How to capture stdout/stderr output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/capture-warnings.html">How to capture warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/skipping.html">How to use skip and xfail to deal with tests that cannot succeed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/plugins.html">How to install and use plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/writing_plugins.html">Writing plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/writing_hook_functions.html">Writing hook functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/existingtestsuite.html">How to use pytest with an existing test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/unittest.html">How to use <code class="docutils literal notranslate"><span class="pre">unittest</span></code>-based tests with pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/xunit_setup.html">How to implement xunit-style set-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../how-to/bash-completion.html">How to set up bash completion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../reference/index.html">Reference guides</a><input aria-label="Toggle navigation of Reference guides" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/reference.html">API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/fixtures.html">Fixtures reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/customize.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/exit-codes.html">Exit codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../reference/plugin_list.html">Pytest Plugin List</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../explanation/index.html">Explanation</a><input aria-label="Toggle navigation of Explanation" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../explanation/anatomy.html">Anatomy of a test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../explanation/fixtures.html">About fixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../explanation/goodpractices.html">Good Integration Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../explanation/pythonpath.html">pytest import mechanisms and <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>/<code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../explanation/types.html">Typing in pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../explanation/ci.html">CI Pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../explanation/flaky.html">Flaky tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../example/index.html">Examples and customization tricks</a><input aria-label="Toggle navigation of Examples and customization tricks" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/reportingdemo.html">Demo of Python failure reports with pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/simple.html">Basic patterns and examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/parametrize.html">Parametrizing tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/markers.html">Working with custom markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/special.html">A session-fixture which can look at all collected tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/pythoncollection.html">Changing standard (Python) test discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/nonpython.html">Working with non-python tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../example/customdirectory.html">Using a custom directory collector</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About the project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../backwards-compatibility.html">Backwards Compatibility Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../backwards-compatibility.html#history">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../backwards-compatibility.html#python-version-support">Python version support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sponsor.html">Sponsor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tidelift.html">pytest for enterprise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contact.html">Contact channels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/pytest/">pytest @ PyPI</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pytest-dev/pytest/">pytest @ GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pytest-dev/pytest/issues">Issue Tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://media.readthedocs.org/pdf/pytest/latest/pytest.pdf">PDF Documentation</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for _pytest.config.argparsing</h1><div class="highlight"><pre>
+<span></span><span class="c1"># mypy: allow-untyped-defs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">final</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">NoReturn</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">UsageError</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">_pytest._io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">_pytest.compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">NOTSET</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">_pytest.deprecated</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_ispytest</span>
+
+
+<span class="n">FILE_OR_DIR</span> <span class="o">=</span> <span class="s2">&quot;file_or_dir&quot;</span>
+
+
+<div class="viewcode-block" id="Parser">
+<a class="viewcode-back" href="../../../reference/reference.html#pytest.Parser">[docs]</a>
+<span class="nd">@final</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Parser</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parser for command line arguments and config-file values.</span>
+
+<span class="sd">    :ivar extra_info: Dict of generic param -&gt; value to display in case</span>
+<span class="sd">        there&#39;s an error processing the command line arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">usage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">processopt</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Argument</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">_ispytest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">check_ispytest</span><span class="p">(</span><span class="n">_ispytest</span><span class="p">)</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">_pytest._argcomplete</span><span class="w"> </span><span class="kn">import</span> <span class="n">filescompleter</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processopt</span> <span class="o">=</span> <span class="n">processopt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extra_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span> <span class="o">=</span> <span class="n">PytestArgumentParser</span><span class="p">(</span><span class="n">usage</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_info</span><span class="p">)</span>
+        <span class="n">anonymous_arggroup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s2">&quot;Custom options&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_anonymous</span> <span class="o">=</span> <span class="n">OptionGroup</span><span class="p">(</span>
+            <span class="n">anonymous_arggroup</span><span class="p">,</span> <span class="s2">&quot;_anonymous&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">_ispytest</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_groups</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_anonymous</span><span class="p">]</span>
+        <span class="c1"># Maps option strings -&gt; dest, e.g. &quot;-V&quot; and &quot;--version&quot; to &quot;version&quot;.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_opt2dest</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">file_or_dir_arg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="n">FILE_OR_DIR</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+        <span class="n">file_or_dir_arg</span><span class="o">.</span><span class="n">completer</span> <span class="o">=</span> <span class="n">filescompleter</span>  <span class="c1"># type: ignore</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inidict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># Maps alias -&gt; canonical name.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ini_aliases</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">prog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">prog</span>
+
+    <span class="nd">@prog</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">prog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">prog</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">processoption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">option</span><span class="p">:</span> <span class="n">Argument</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processopt</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">option</span><span class="o">.</span><span class="n">dest</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_processopt</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Parser.getgroup">
+<a class="viewcode-back" href="../../../reference/reference.html#pytest.Parser.getgroup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getgroup</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">after</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OptionGroup</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get (or create) a named option Group.</span>
+
+<span class="sd">        :param name: Name of the option group.</span>
+<span class="sd">        :param description: Long description for --help output.</span>
+<span class="sd">        :param after: Name of another group, used for ordering --help output.</span>
+<span class="sd">        :returns: The option group.</span>
+
+<span class="sd">        The returned group object has an ``addoption`` method with the same</span>
+<span class="sd">        signature as :func:`parser.addoption &lt;pytest.Parser.addoption&gt;` but</span>
+<span class="sd">        will be shown in the respective group in the output of</span>
+<span class="sd">        ``pytest --help``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_groups</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">group</span>
+
+        <span class="n">arggroup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="n">description</span> <span class="ow">or</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">OptionGroup</span><span class="p">(</span><span class="n">arggroup</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">_ispytest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_groups</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">grp</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">after</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_groups</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">group</span><span class="p">)</span>
+        <span class="c1"># argparse doesn&#39;t provide a way to control `--help` order, so must</span>
+        <span class="c1"># access its internals ☹.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">_action_groups</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">_action_groups</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">group</span></div>
+
+
+<div class="viewcode-block" id="Parser.addoption">
+<a class="viewcode-back" href="../../../reference/reference.html#pytest.Parser.addoption">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addoption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">opts</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">attrs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register a command line option.</span>
+
+<span class="sd">        :param opts:</span>
+<span class="sd">            Option names, can be short or long options.</span>
+<span class="sd">        :param attrs:</span>
+<span class="sd">            Same attributes as the argparse library&#39;s :meth:`add_argument()</span>
+<span class="sd">            &lt;argparse.ArgumentParser.add_argument&gt;` function accepts.</span>
+
+<span class="sd">        After command line parsing, options are available on the pytest config</span>
+<span class="sd">        object via ``config.option.NAME`` where ``NAME`` is usually set</span>
+<span class="sd">        by passing a ``dest`` attribute, for example</span>
+<span class="sd">        ``addoption(&quot;--long&quot;, dest=&quot;NAME&quot;, ...)``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_anonymous</span><span class="o">.</span><span class="n">addoption</span><span class="p">(</span><span class="o">*</span><span class="n">opts</span><span class="p">,</span> <span class="o">**</span><span class="n">attrs</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">args</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">namespace</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse the arguments.</span>
+
+<span class="sd">        Unlike ``parse_known_args`` and ``parse_known_and_unknown_args``,</span>
+<span class="sd">        raises PrintHelp on `--help` and UsageError on unknown flags</span>
+
+<span class="sd">        :meta private:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">_pytest._argcomplete</span><span class="w"> </span><span class="kn">import</span> <span class="n">try_argcomplete</span>
+
+        <span class="n">try_argcomplete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="p">)</span>
+        <span class="n">strargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">namespace</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">namespace</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">namespace</span><span class="o">.</span><span class="n">_raise_print_help</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">parse_intermixed_args</span><span class="p">(</span><span class="n">strargs</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="n">namespace</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">namespace</span><span class="o">.</span><span class="n">_raise_print_help</span>
+
+<div class="viewcode-block" id="Parser.parse_known_args">
+<a class="viewcode-back" href="../../../reference/reference.html#pytest.Parser.parse_known_args">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse_known_args</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">args</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">namespace</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse the known arguments at this point.</span>
+
+<span class="sd">        :returns: An argparse namespace object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_known_and_unknown_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="n">namespace</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Parser.parse_known_and_unknown_args">
+<a class="viewcode-back" href="../../../reference/reference.html#pytest.Parser.parse_known_and_unknown_args">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse_known_and_unknown_args</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">args</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+        <span class="n">namespace</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse the known arguments at this point, and also return the</span>
+<span class="sd">        remaining unknown flag arguments.</span>
+
+<span class="sd">        :returns:</span>
+<span class="sd">            A tuple containing an argparse namespace object for the known</span>
+<span class="sd">            arguments, and a list of unknown flag arguments.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">strargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># Older argparse have a bugged parse_known_intermixed_args.</span>
+            <span class="n">namespace</span><span class="p">,</span> <span class="n">unknown</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">(</span><span class="n">strargs</span><span class="p">,</span> <span class="n">namespace</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">namespace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="n">file_or_dir</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">FILE_OR_DIR</span><span class="p">)</span>
+            <span class="n">unknown_flags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">unknown</span><span class="p">:</span>
+                <span class="p">(</span><span class="n">unknown_flags</span> <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">file_or_dir</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">unknown_flags</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">optparser</span><span class="o">.</span><span class="n">parse_known_intermixed_args</span><span class="p">(</span><span class="n">strargs</span><span class="p">,</span> <span class="n">namespace</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Parser.addini">
+<a class="viewcode-back" href="../../../reference/reference.html#pytest.Parser.addini">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addini</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">help</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="nb">type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
+            <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;paths&quot;</span><span class="p">,</span> <span class="s2">&quot;pathlist&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">,</span> <span class="s2">&quot;linelist&quot;</span><span class="p">,</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span>
+        <span class="p">]</span>
+        <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">NOTSET</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">aliases</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Register a configuration file option.</span>
+
+<span class="sd">        :param name:</span>
+<span class="sd">            Name of the configuration.</span>
+<span class="sd">        :param type:</span>
+<span class="sd">            Type of the configuration. Can be:</span>
+
+<span class="sd">                * ``string``: a string</span>
+<span class="sd">                * ``bool``: a boolean</span>
+<span class="sd">                * ``args``: a list of strings, separated as in a shell</span>
+<span class="sd">                * ``linelist``: a list of strings, separated by line breaks</span>
+<span class="sd">                * ``paths``: a list of :class:`pathlib.Path`, separated as in a shell</span>
+<span class="sd">                * ``pathlist``: a list of ``py.path``, separated as in a shell</span>
+<span class="sd">                * ``int``: an integer</span>
+<span class="sd">                * ``float``: a floating-point number</span>
+
+<span class="sd">                .. versionadded:: 8.4</span>
+
+<span class="sd">                    The ``float`` and ``int`` types.</span>
+
+<span class="sd">            For ``paths`` and ``pathlist`` types, they are considered relative to the config-file.</span>
+<span class="sd">            In case the execution is happening without a config-file defined,</span>
+<span class="sd">            they will be considered relative to the current working directory (for example with ``--override-ini``).</span>
+
+<span class="sd">            .. versionadded:: 7.0</span>
+<span class="sd">                The ``paths`` variable type.</span>
+
+<span class="sd">            .. versionadded:: 8.1</span>
+<span class="sd">                Use the current working directory to resolve ``paths`` and ``pathlist`` in the absence of a config-file.</span>
+
+<span class="sd">            Defaults to ``string`` if ``None`` or not passed.</span>
+<span class="sd">        :param default:</span>
+<span class="sd">            Default value if no config-file option exists but is queried.</span>
+<span class="sd">        :param aliases:</span>
+<span class="sd">            Additional names by which this option can be referenced.</span>
+<span class="sd">            Aliases resolve to the canonical name.</span>
+
+<span class="sd">            .. versionadded:: 9.0</span>
+<span class="sd">                The ``aliases`` parameter.</span>
+
+<span class="sd">        The value of configuration keys can be retrieved via a call to</span>
+<span class="sd">        :py:func:`config.getini(name) &lt;pytest.Config.getini&gt;`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">type</span> <span class="ow">in</span> <span class="p">(</span>
+            <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paths&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pathlist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;linelist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bool&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;int&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;float&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
+        <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="n">NOTSET</span><span class="p">:</span>
+            <span class="n">default</span> <span class="o">=</span> <span class="n">get_ini_default_for_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inidict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">help</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="n">aliases</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">alias</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inidict</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;alias </span><span class="si">{</span><span class="n">alias</span><span class="si">!r}</span><span class="s2"> conflicts with existing configuration option&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">already</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ini_aliases</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">alias</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">alias</span><span class="si">!r}</span><span class="s2"> is already an alias of </span><span class="si">{</span><span class="n">already</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ini_aliases</span><span class="p">[</span><span class="n">alias</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span></div>
+</div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_ini_default_for_type</span><span class="p">(</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
+        <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;paths&quot;</span><span class="p">,</span> <span class="s2">&quot;pathlist&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">,</span> <span class="s2">&quot;linelist&quot;</span><span class="p">,</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span>
+    <span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Used by addini to get the default value for a given config option type, when</span>
+<span class="sd">    default is not supplied.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;paths&quot;</span><span class="p">,</span> <span class="s2">&quot;pathlist&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">,</span> <span class="s2">&quot;linelist&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;bool&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;int&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;float&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Argument</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An option defined in an OptionGroup.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_action</span> <span class="o">=</span> <span class="n">action</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action</span><span class="o">.</span><span class="vm">__dict__</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action</span><span class="o">.</span><span class="n">option_strings</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dest</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action</span><span class="o">.</span><span class="n">dest</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action</span><span class="o">.</span><span class="n">default</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action</span><span class="o">.</span><span class="n">type</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;opts: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">names</span><span class="p">())]</span>
+        <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;dest: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_action</span><span class="o">.</span><span class="n">type</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;type: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">)]</span>
+        <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;default: &quot;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="s2">&quot;Argument(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="OptionGroup">
+<a class="viewcode-back" href="../../../reference/reference.html#pytest.OptionGroup">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OptionGroup</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A group of options shown in its own section.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">arggroup</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">_ArgumentGroup</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">parser</span><span class="p">:</span> <span class="n">Parser</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">_ispytest</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">check_ispytest</span><span class="p">(</span><span class="n">_ispytest</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_arggroup</span> <span class="o">=</span> <span class="n">arggroup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Argument</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">parser</span>
+
+<div class="viewcode-block" id="OptionGroup.addoption">
+<a class="viewcode-back" href="../../../reference/reference.html#pytest.OptionGroup.addoption">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">addoption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">opts</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">attrs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add an option to this group.</span>
+
+<span class="sd">        If a shortened version of a long option is specified, it will</span>
+<span class="sd">        be suppressed in the help. ``addoption(&#39;--twowords&#39;, &#39;--two-words&#39;)``</span>
+<span class="sd">        results in help showing ``--two-words`` only, but ``--twowords`` gets</span>
+<span class="sd">        accepted **and** the automatic destination is in ``args.twowords``.</span>
+
+<span class="sd">        :param opts:</span>
+<span class="sd">            Option names, can be short or long options.</span>
+<span class="sd">            Note that lower-case short options (e.g. `-x`) are reserved.</span>
+<span class="sd">        :param attrs:</span>
+<span class="sd">            Same attributes as the argparse library&#39;s :meth:`add_argument()</span>
+<span class="sd">            &lt;argparse.ArgumentParser.add_argument&gt;` function accepts.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">conflict</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span>
+            <span class="n">name</span> <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">opt</span><span class="o">.</span><span class="n">names</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">conflict</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;option names </span><span class="si">{</span><span class="n">conflict</span><span class="si">}</span><span class="s2"> already added&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_addoption_inner</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">allow_reserved</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_addoption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">opts</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">attrs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Like addoption(), but also allows registering short lower case options (e.g. -x),</span>
+<span class="sd">        which are reserved for pytest core.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_addoption_inner</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">allow_reserved</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_addoption_inner</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">opts</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">allow_reserved</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_reserved</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">opt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span> <span class="ow">and</span> <span class="n">opt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;lowercase short options are reserved&quot;</span><span class="p">)</span>
+
+        <span class="n">action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arggroup</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="o">*</span><span class="n">opts</span><span class="p">,</span> <span class="o">**</span><span class="n">attrs</span><span class="p">)</span>
+        <span class="n">option</span> <span class="o">=</span> <span class="n">Argument</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">option</span><span class="o">.</span><span class="n">names</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">_opt2dest</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">dest</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">processoption</span><span class="p">(</span><span class="n">option</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PytestArgumentParser</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">usage</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">extra_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">usage</span><span class="o">=</span><span class="n">usage</span><span class="p">,</span>
+            <span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">formatter_class</span><span class="o">=</span><span class="n">DropShorterLongHelpFormatter</span><span class="p">,</span>
+            <span class="n">allow_abbrev</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">fromfile_prefix_chars</span><span class="o">=</span><span class="s2">&quot;@&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># extra_info is a dict of (param -&gt; value) to display if there&#39;s</span>
+        <span class="c1"># an usage error to provide more contextual information to the user.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extra_info</span> <span class="o">=</span> <span class="n">extra_info</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Transform argparse error message into UsageError.&quot;&quot;&quot;</span>
+        <span class="c1"># TODO(py313): Replace with `exit_on_error=False`. Note that while it</span>
+        <span class="c1"># was added in Python 3.9, it was broken until 3.13 (cpython#121018).</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prog</span><span class="si">}</span><span class="s2">: error: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_info</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_info</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+            <span class="p">)</span>
+        <span class="k">raise</span> <span class="n">UsageError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">format_usage</span><span class="p">()</span> <span class="o">+</span> <span class="n">msg</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DropShorterLongHelpFormatter</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">HelpFormatter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Shorten help for long options that differ only in extra hyphens.</span>
+
+<span class="sd">    - Collapse **long** options that are the same except for extra hyphens.</span>
+<span class="sd">    - Shortcut if there are only two options and one of them is a short one.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Use more accurate terminal width.</span>
+        <span class="k">if</span> <span class="s2">&quot;width&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_pytest</span><span class="o">.</span><span class="n">_io</span><span class="o">.</span><span class="n">get_terminal_width</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_format_action_invocation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">orgstr</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_format_action_invocation</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">orgstr</span> <span class="ow">and</span> <span class="n">orgstr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>  <span class="c1"># only optional arguments</span>
+            <span class="k">return</span> <span class="n">orgstr</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">orgstr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="c1"># a shortcut for &#39;-h, --help&#39; or &#39;--abc&#39;, &#39;-a&#39;</span>
+            <span class="k">return</span> <span class="n">orgstr</span>
+        <span class="n">return_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">short_long</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">option</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">option</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">assert</span> <span class="n">option</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">),</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;long optional argument without &quot;--&quot;: [</span><span class="si">{</span><span class="n">option</span><span class="si">}</span><span class="s1">]&#39;</span>
+            <span class="p">)</span>
+            <span class="n">xxoption</span> <span class="o">=</span> <span class="n">option</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+            <span class="n">shortened</span> <span class="o">=</span> <span class="n">xxoption</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">shortened</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">short_long</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">short_long</span><span class="p">[</span><span class="n">shortened</span><span class="p">])</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span>
+                <span class="n">xxoption</span>
+            <span class="p">):</span>
+                <span class="n">short_long</span><span class="p">[</span><span class="n">shortened</span><span class="p">]</span> <span class="o">=</span> <span class="n">xxoption</span>
+        <span class="c1"># now short_long has been filled out to the longest with dashes</span>
+        <span class="c1"># **and** we keep the right option ordering from add_argument</span>
+        <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">option</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">option</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+                <span class="n">return_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">option</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="n">short_long</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)):</span>
+                <span class="n">return_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">option</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">return_list</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_split_lines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrap lines after splitting on original newlines.</span>
+
+<span class="sd">        This allows to have explicit line breaks in the help text.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">width</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">lines</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OverrideIniAction</span><span class="p">(</span><span class="n">argparse</span><span class="o">.</span><span class="n">Action</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom argparse action that makes a CLI flag equivalent to overriding an</span>
+<span class="sd">    option, in addition to behaving like `store_true`.</span>
+
+<span class="sd">    This can simplify things since code only needs to inspect the config option</span>
+<span class="sd">    and not consider the CLI flag.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">option_strings</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">dest</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">nargs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+        <span class="n">ini_option</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">ini_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">option_strings</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ini_option</span> <span class="o">=</span> <span class="n">ini_option</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ini_value</span> <span class="o">=</span> <span class="n">ini_value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">parser</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">,</span>
+        <span class="n">namespace</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dest</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">current_overrides</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="s2">&quot;override_ini&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">current_overrides</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">current_overrides</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">current_overrides</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ini_option</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ini_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="s2">&quot;override_ini&quot;</span><span class="p">,</span> <span class="n">current_overrides</span><span class="p">)</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2015, holger krekel and pytest-dev team
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=6e94e9f2"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    </body>
+</html>

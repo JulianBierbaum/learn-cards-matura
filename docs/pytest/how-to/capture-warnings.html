@@ -1,0 +1,830 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../search.html"><link rel="next" title="How to use skip and xfail to deal with tests that cannot succeed" href="skipping.html"><link rel="prev" title="How to capture stdout/stderr output" href="capture-stdout-stderr.html">
+        <link rel="canonical" href="https://docs.pytest.org/en/stable/how-to/capture-warnings.html">
+        <link rel="prefetch" href="../_static/pytest1.png" as="image">
+
+    <link rel="shortcut icon" href="../_static/favicon.png"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>How to capture warnings - pytest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments_pytest.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pytest-custom.css?v=eb7c59a4" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">pytest documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/pytest1.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Get Started</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">How-to guides</a><input aria-label="Toggle navigation of How-to guides" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="usage.html">How to invoke pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assert.html">How to write and report assertions in tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fixtures.html">How to use fixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mark.html">How to mark test functions with attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parametrize.html">How to parametrize fixtures and test functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subtests.html">How to use subtests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tmp_path.html">How to use temporary directories and files in tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monkeypatch.html">How to monkeypatch/mock modules and environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doctest.html">How to run doctests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cache.html">How to re-run failed tests and maintain state between test runs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="failures.html">How to handle test failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output.html">Managing pytest’s output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">How to manage logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="capture-stdout-stderr.html">How to capture stdout/stderr output</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">How to capture warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skipping.html">How to use skip and xfail to deal with tests that cannot succeed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">How to install and use plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_plugins.html">Writing plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_hook_functions.html">Writing hook functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="existingtestsuite.html">How to use pytest with an existing test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unittest.html">How to use <code class="docutils literal notranslate"><span class="pre">unittest</span></code>-based tests with pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xunit_setup.html">How to implement xunit-style set-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bash-completion.html">How to set up bash completion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference guides</a><input aria-label="Toggle navigation of Reference guides" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reference.html">API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/fixtures.html">Fixtures reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/customize.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/exit-codes.html">Exit codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/plugin_list.html">Pytest Plugin List</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../explanation/index.html">Explanation</a><input aria-label="Toggle navigation of Explanation" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/anatomy.html">Anatomy of a test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/fixtures.html">About fixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/goodpractices.html">Good Integration Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/pythonpath.html">pytest import mechanisms and <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>/<code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/types.html">Typing in pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/ci.html">CI Pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/flaky.html">Flaky tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../example/index.html">Examples and customization tricks</a><input aria-label="Toggle navigation of Examples and customization tricks" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../example/reportingdemo.html">Demo of Python failure reports with pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/simple.html">Basic patterns and examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/parametrize.html">Parametrizing tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/markers.html">Working with custom markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/special.html">A session-fixture which can look at all collected tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/pythoncollection.html">Changing standard (Python) test discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/nonpython.html">Working with non-python tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/customdirectory.html">Using a custom directory collector</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About the project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backwards-compatibility.html">Backwards Compatibility Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backwards-compatibility.html#history">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backwards-compatibility.html#python-version-support">Python version support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsor.html">Sponsor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tidelift.html">pytest for enterprise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact channels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/pytest/">pytest @ PyPI</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pytest-dev/pytest/">pytest @ GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pytest-dev/pytest/issues">Issue Tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://media.readthedocs.org/pdf/pytest/latest/pytest.pdf">PDF Documentation</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="how-to-capture-warnings">
+<span id="warnings"></span><h1>How to capture warnings<a class="headerlink" href="#how-to-capture-warnings" title="Link to this heading">¶</a></h1>
+<p>Starting from version <code class="docutils literal notranslate"><span class="pre">3.1</span></code>, pytest now automatically catches warnings during test execution
+and displays them at the end of the session:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># content of test_show_warnings.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">api_v1</span><span class="p">():</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">(</span><span class="s2">&quot;api v1, should use functions from v2&quot;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_one</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">api_v1</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Running pytest now produces this output:</p>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span>$ pytest test_show_warnings.py
+<span class=" -Color -Color-Bold">=========================== test session starts ============================</span>
+platform linux -- Python 3.x.y, pytest-9.x.y, pluggy-1.x.y
+rootdir: /home/sweet/project
+collected 1 item
+
+test_show_warnings.py <span class=" -Color -Color-Green">.</span>                                              <span class=" -Color -Color-Green">[100%]</span>
+
+<span class=" -Color -Color-Yellow">============================= warnings summary =============================</span>
+test_show_warnings.py::test_one
+  /home/sweet/project/test_show_warnings.py:5: UserWarning: api v1, should use functions from v2
+    warnings.warn(UserWarning(&quot;api v1, should use functions from v2&quot;))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+<span class=" -Color -Color-Yellow">======================= </span><span class=" -Color -Color-Green">1 passed</span>, <span class=" -Color -Color-Bold -Color-Bold-Yellow">1 warning</span><span class=" -Color -Color-Yellow"> in 0.12s =======================</span>
+</pre></div>
+</div>
+<section id="controlling-warnings">
+<span id="id1"></span><h2>Controlling warnings<a class="headerlink" href="#controlling-warnings" title="Link to this heading">¶</a></h2>
+<p>Similar to Python’s <a class="reference external" href="https://docs.python.org/3/library/warnings.html#warning-filter">warning filter</a> and <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#cmdoption-W" title="(in Python v3.14)"><code class="xref std std-option docutils literal notranslate"><span class="pre">-W</span> <span class="pre">option</span></code></a> flag, pytest provides
+its own <code class="docutils literal notranslate"><span class="pre">-W</span></code> flag to control which warnings are ignored, displayed, or turned into
+errors. See the <a class="reference external" href="https://docs.python.org/3/library/warnings.html#warning-filter">warning filter</a> documentation for more
+advanced use-cases.</p>
+<p>This code sample shows how to treat any <code class="docutils literal notranslate"><span class="pre">UserWarning</span></code> category class of warning
+as an error:</p>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span>$ pytest -q test_show_warnings.py -W error::UserWarning
+<span class=" -Color -Color-Red">F</span>                                                                    <span class=" -Color -Color-Red">[100%]</span>
+================================= FAILURES =================================
+<span class=" -Color -Color-Bold -Color-Bold-Red">_________________________________ test_one _________________________________</span>
+
+    def test_one():
+&gt;       assert api_v1() == 1
+               ^^^^^^^^
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">test_show_warnings.py</span>:10:
+<span class=" -Color -Color-Bold -Color-Bold-Red">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</span>
+
+    def api_v1():
+&gt;       warnings.warn(UserWarning(&quot;api v1, should use functions from v2&quot;))
+<span class=" -Color -Color-Bold -Color-Bold-Red">E       UserWarning: api v1, should use functions from v2</span>
+
+<span class=" -Color -Color-Bold -Color-Bold-Red">test_show_warnings.py</span>:5: UserWarning
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">========================= short test summary info ==========================</span>
+<span class=" -Color -Color-Red">FAILED</span> test_show_warnings.py::<span class=" -Color -Color-Bold">test_one</span> - UserWarning: api v1, should use ...
+<span class=" -Color -Color-Bold -Color-Bold-Red">1 failed</span><span class=" -Color -Color-Red"> in 0.12s</span>
+</pre></div>
+</div>
+<p>The same option can be set in the configuration file using the
+<a class="reference internal" href="../reference/reference.html#confval-filterwarnings"><code class="xref std std-confval docutils literal notranslate"><span class="pre">filterwarnings</span></code></a> configuration option. For example, the configuration below will ignore all
+user warnings and specific deprecation warnings matching a regex, but will transform
+all other warnings into errors.</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--1">toml</label><div class="tab-content docutils container">
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[pytest]</span>
+<span class="n">filterwarnings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s1">&#39;error&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">&#39;ignore::UserWarning&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1"># Note the use of single quote below to denote &quot;raw&quot; strings in TOML.</span>
+<span class="w">    </span><span class="s1">&#39;ignore:function ham\(\) is deprecated:DeprecationWarning&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--2">ini</label><div class="tab-content docutils container">
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[pytest]</span>
+<span class="na">filterwarnings</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">error</span>
+<span class="w">    </span><span class="na">ignore</span><span class="o">:</span><span class="s">:UserWarning</span>
+<span class="w">    </span><span class="na">ignore</span><span class="o">:</span><span class="s">function ham\(\) is deprecated:DeprecationWarning</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When a warning matches more than one option in the list, the action for the last matching option
+is performed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-W</span></code> flag and the <a class="reference internal" href="../reference/reference.html#confval-filterwarnings"><code class="xref std std-confval docutils literal notranslate"><span class="pre">filterwarnings</span></code></a> configuration option use warning filters that are
+similar in structure, but each configuration option interprets its filter
+differently. For example, <em>message</em> in <code class="docutils literal notranslate"><span class="pre">filterwarnings</span></code> is a string containing a
+regular expression that the start of the warning message must match,
+case-insensitively, while <em>message</em> in <code class="docutils literal notranslate"><span class="pre">-W</span></code> is a literal string that the start of
+the warning message must contain (case-insensitively), ignoring any whitespace at
+the start or end of message. Consult the <a class="reference external" href="https://docs.python.org/3/library/warnings.html#warning-filter">warning filter</a> documentation for more
+details.</p>
+</div>
+</section>
+<section id="pytest-mark-filterwarnings">
+<span id="filterwarnings"></span><h2><code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.filterwarnings</span></code><a class="headerlink" href="#pytest-mark-filterwarnings" title="Link to this heading">¶</a></h2>
+<p>You can use the <a class="reference internal" href="../reference/reference.html#pytest-mark-filterwarnings-ref"><span class="std std-ref">&#64;pytest.mark.filterwarnings</span></a> mark to add warning filters to specific test items,
+allowing you to have finer control of which warnings should be captured at test, class or
+even module level:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">api_v1</span><span class="p">():</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">(</span><span class="s2">&quot;api v1, should use functions from v2&quot;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="mi">1</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore:api v1&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_one</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">api_v1</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>You can specify multiple filters with separate decorators:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ignore &quot;api v1&quot; warnings, but fail on all other warnings</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore:api v1&quot;</span><span class="p">)</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_one</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">api_v1</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Regarding decorator order and filter precedence:
+it’s important to remember that decorators are evaluated in reverse order,
+so you have to list the warning filters in the reverse order
+compared to traditional <a class="reference external" href="https://docs.python.org/3/library/warnings.html#warnings.filterwarnings" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">warnings.filterwarnings()</span></code></a> and <a class="reference external" href="https://docs.python.org/3/using/cmdline.html#cmdoption-W" title="(in Python v3.14)"><code class="xref std std-option docutils literal notranslate"><span class="pre">-W</span> <span class="pre">option</span></code></a> usage.
+This means in practice that filters from earlier <a class="reference internal" href="../reference/reference.html#pytest-mark-filterwarnings-ref"><span class="std std-ref">&#64;pytest.mark.filterwarnings</span></a> decorators
+take precedence over filters from later decorators, as illustrated in the example above.</p>
+</div>
+<p>Filters applied using a mark take precedence over filters passed on the command line or configured
+by the <a class="reference internal" href="../reference/reference.html#confval-filterwarnings"><code class="xref std std-confval docutils literal notranslate"><span class="pre">filterwarnings</span></code></a> configuration option.</p>
+<p>You may apply a filter to all tests of a class by using the <a class="reference internal" href="../reference/reference.html#pytest-mark-filterwarnings-ref"><span class="std std-ref">filterwarnings</span></a> mark as a class
+decorator or to all tests in a module by setting the <a class="reference internal" href="../reference/reference.html#globalvar-pytestmark"><code class="xref std std-globalvar docutils literal notranslate"><span class="pre">pytestmark</span></code></a> variable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># turns all warnings into errors for this module</span>
+<span class="n">pytestmark</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to apply multiple filters
+(by assigning a list of <a class="reference internal" href="../reference/reference.html#pytest-mark-filterwarnings-ref"><span class="std std-ref">filterwarnings</span></a> mark to <a class="reference internal" href="../reference/reference.html#globalvar-pytestmark"><code class="xref std std-globalvar docutils literal notranslate"><span class="pre">pytestmark</span></code></a>),
+you must use the traditional <a class="reference external" href="https://docs.python.org/3/library/warnings.html#warnings.filterwarnings" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">warnings.filterwarnings()</span></code></a> ordering approach (later filters take precedence),
+which is the reverse of the decorator approach mentioned above.</p>
+</div>
+<p><em>Credits go to Florian Schulze for the reference implementation in the</em> <a class="reference external" href="https://github.com/fschulze/pytest-warnings">pytest-warnings</a>
+<em>plugin.</em></p>
+</section>
+<section id="disabling-warnings-summary">
+<h2>Disabling warnings summary<a class="headerlink" href="#disabling-warnings-summary" title="Link to this heading">¶</a></h2>
+<p>Although not recommended, you can use the <a class="reference internal" href="../reference/reference.html#cmdoption-disable-pytest-warnings"><code class="xref std std-option docutils literal notranslate"><span class="pre">--disable-warnings</span></code></a> command-line option to suppress the
+warning summary entirely from the test run output.</p>
+</section>
+<section id="disabling-warning-capture-entirely">
+<h2>Disabling warning capture entirely<a class="headerlink" href="#disabling-warning-capture-entirely" title="Link to this heading">¶</a></h2>
+<p>This plugin is enabled by default but can be disabled entirely in your configuration file with:</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio" /><label class="tab-label" for="tab-set--1-input--1">toml</label><div class="tab-content docutils container">
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[pytest]</span>
+<span class="n">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-p&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;no:warnings&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio" /><label class="tab-label" for="tab-set--1-input--2">ini</label><div class="tab-content docutils container">
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[pytest]</span>
+<span class="na">addopts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-p no:warnings</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or passing <code class="docutils literal notranslate"><span class="pre">-p</span> <span class="pre">no:warnings</span></code> in the command-line. This might be useful if your test suites handles warnings
+using an external system.</p>
+</section>
+<section id="deprecationwarning-and-pendingdeprecationwarning">
+<span id="deprecation-warnings"></span><h2>DeprecationWarning and PendingDeprecationWarning<a class="headerlink" href="#deprecationwarning-and-pendingdeprecationwarning" title="Link to this heading">¶</a></h2>
+<p>By default pytest will display <code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> and <code class="docutils literal notranslate"><span class="pre">PendingDeprecationWarning</span></code> warnings from
+user code and third-party libraries, as recommended by <span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-0565/"><strong>PEP 565</strong></a>.
+This helps users keep their code modern and avoid breakages when deprecated warnings are effectively removed.</p>
+<p>However, in the specific case where users capture any type of warnings in their test, either with
+<a class="reference internal" href="../reference/reference.html#pytest.warns" title="pytest.warns"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.warns()</span></code></a>, <a class="reference internal" href="../reference/reference.html#pytest.deprecated_call" title="pytest.deprecated_call"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.deprecated_call()</span></code></a> or using the <a class="reference internal" href="../reference/reference.html#std-fixture-recwarn"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">recwarn</span></code></a> fixture,
+no warning will be displayed at all.</p>
+<p>Sometimes it is useful to hide some specific deprecation warnings that happen in code that you have no control over
+(such as third-party libraries), in which case you might use the warning filters options (configuration or marks) to ignore
+those warnings.</p>
+<p>For example:</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio" /><label class="tab-label" for="tab-set--2-input--1">toml</label><div class="tab-content docutils container">
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[pytest]</span>
+<span class="n">filterwarnings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s1">&#39;ignore:.*U.*mode is deprecated:DeprecationWarning&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio" /><label class="tab-label" for="tab-set--2-input--2">ini</label><div class="tab-content docutils container">
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[pytest]</span>
+<span class="na">filterwarnings</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="na">ignore</span><span class="o">:</span><span class="s">.*U.*mode is deprecated:DeprecationWarning</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This will ignore all warnings of type <code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> where the start of the message matches
+the regular expression <code class="docutils literal notranslate"><span class="pre">&quot;.*U.*mode</span> <span class="pre">is</span> <span class="pre">deprecated&quot;</span></code>.</p>
+<p>See <a class="reference internal" href="#filterwarnings"><span class="std std-ref">&#64;pytest.mark.filterwarnings</span></a> and
+<a class="reference internal" href="#controlling-warnings"><span class="std std-ref">Controlling warnings</span></a> for more examples.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If warnings are configured at the interpreter level, using
+the <span class="target" id="index-1"></span><a class="reference external" href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONWARNINGS" title="(in Python v3.14)"><code class="docutils literal notranslate"><span class="pre">PYTHONWARNINGS</span></code></a> environment variable or the
+<code class="docutils literal notranslate"><span class="pre">-W</span></code> command-line option, pytest will not configure any filters by default.</p>
+<p>Also pytest doesn’t follow <span class="target" id="index-2"></span><a class="pep reference external" href="https://peps.python.org/pep-0565/"><strong>PEP 565</strong></a> suggestion of resetting all warning filters because
+it might break test suites that configure warning filters themselves
+by calling <a class="reference external" href="https://docs.python.org/3/library/warnings.html#warnings.simplefilter" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">warnings.simplefilter()</span></code></a> (see <a class="reference external" href="https://github.com/pytest-dev/pytest/issues/2430">#2430</a> for an example of that).</p>
+</div>
+</section>
+<section id="ensuring-code-triggers-a-deprecation-warning">
+<span id="ensuring-function-triggers"></span><span id="ensuring-a-function-triggers-a-deprecation-warning"></span><h2>Ensuring code triggers a deprecation warning<a class="headerlink" href="#ensuring-code-triggers-a-deprecation-warning" title="Link to this heading">¶</a></h2>
+<p>You can also use <a class="reference internal" href="../reference/reference.html#pytest.deprecated_call" title="pytest.deprecated_call"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.deprecated_call()</span></code></a> for checking
+that a certain function call triggers a <code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code>, <code class="docutils literal notranslate"><span class="pre">PendingDeprecationWarning</span></code> or
+<code class="docutils literal notranslate"><span class="pre">FutureWarning</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_myfunction_deprecated</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">deprecated_call</span><span class="p">():</span>
+        <span class="n">myfunction</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This test will fail if <code class="docutils literal notranslate"><span class="pre">myfunction</span></code> does not issue a deprecation warning
+when called with a <code class="docutils literal notranslate"><span class="pre">17</span></code> argument.</p>
+</section>
+<section id="warns">
+<span id="asserting-warnings-with-the-warns-function"></span><span id="assertwarnings"></span><span id="asserting-warnings"></span><span id="id2"></span><h2>Asserting warnings with the warns function<a class="headerlink" href="#warns" title="Link to this heading">¶</a></h2>
+<p>You can check that code raises a particular warning using <a class="reference internal" href="../reference/reference.html#pytest.warns" title="pytest.warns"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.warns()</span></code></a>,
+which works in a similar manner to <a class="reference internal" href="assert.html#assertraises"><span class="std std-ref">raises</span></a> (except that
+<a class="reference internal" href="assert.html#assertraises"><span class="std std-ref">raises</span></a> does not capture all exceptions, only the
+<code class="docutils literal notranslate"><span class="pre">expected_exception</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_warning</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">warns</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;my warning&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The test will fail if the warning in question is not raised. Use the keyword
+argument <code class="docutils literal notranslate"><span class="pre">match</span></code> to assert that the warning matches a text or regex.
+To match a literal string that may contain regular expression metacharacters like <code class="docutils literal notranslate"><span class="pre">(</span></code> or <code class="docutils literal notranslate"><span class="pre">.</span></code>, the pattern can
+first be escaped with <code class="docutils literal notranslate"><span class="pre">re.escape</span></code>.</p>
+<p>Some examples:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">warns</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;must be 0 or None&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;value must be 0 or None&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">warns</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;must be \d+$&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;value must be 42&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+<span class="gp">...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">warns</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;must be \d+$&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;this is not here&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="w">  </span><span class="c">...</span>
+<span class="gr">Failed</span>: <span class="n">DID NOT WARN. No warnings of type ...UserWarning... were emitted...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">warns</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s2">&quot;issue with foo() func&quot;</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;issue with foo() func&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>You can also call <a class="reference internal" href="../reference/reference.html#pytest.warns" title="pytest.warns"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.warns()</span></code></a> on a function or code string:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span><span class="o">.</span><span class="n">warns</span><span class="p">(</span><span class="n">expected_warning</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">pytest</span><span class="o">.</span><span class="n">warns</span><span class="p">(</span><span class="n">expected_warning</span><span class="p">,</span> <span class="s2">&quot;func(*args, **kwargs)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The function also returns a list of all raised warnings (as
+<code class="docutils literal notranslate"><span class="pre">warnings.WarningMessage</span></code> objects), which you can query for
+additional information:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">warns</span><span class="p">(</span><span class="ne">RuntimeWarning</span><span class="p">)</span> <span class="k">as</span> <span class="n">record</span><span class="p">:</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;another warning&quot;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+
+<span class="c1"># check that only one warning was raised</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="c1"># check that the message matches</span>
+<span class="k">assert</span> <span class="n">record</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;another warning&quot;</span>
+</pre></div>
+</div>
+<p>Alternatively, you can examine raised warnings in detail using the
+<a class="reference internal" href="../reference/reference.html#std-fixture-recwarn"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">recwarn</span></code></a> fixture (see <a class="reference internal" href="#recwarn"><span class="std std-ref">below</span></a>).</p>
+<p>The <a class="reference internal" href="../reference/reference.html#std-fixture-recwarn"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">recwarn</span></code></a> fixture automatically ensures to reset the warnings
+filter at the end of the test, so no global state is leaked.</p>
+</section>
+<section id="recwarn">
+<span id="recording-warnings"></span><span id="id3"></span><h2>Recording warnings<a class="headerlink" href="#recwarn" title="Link to this heading">¶</a></h2>
+<p>You can record raised warnings either using the <a class="reference internal" href="../reference/reference.html#pytest.warns" title="pytest.warns"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.warns()</span></code></a> context manager or with
+the <a class="reference internal" href="../reference/reference.html#std-fixture-recwarn"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">recwarn</span></code></a> fixture.</p>
+<p>To record with <a class="reference internal" href="../reference/reference.html#pytest.warns" title="pytest.warns"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.warns()</span></code></a> without asserting anything about the warnings,
+pass no arguments as the expected warning type and it will default to a generic Warning:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">warns</span><span class="p">()</span> <span class="k">as</span> <span class="n">record</span><span class="p">:</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;runtime&quot;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;user&quot;</span>
+<span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;runtime&quot;</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../reference/reference.html#std-fixture-recwarn"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">recwarn</span></code></a> fixture will record warnings for the whole function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_hello</span><span class="p">(</span><span class="n">recwarn</span><span class="p">):</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">recwarn</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">recwarn</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">category</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">str</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">message</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;hello&quot;</span>
+    <span class="k">assert</span> <span class="n">w</span><span class="o">.</span><span class="n">filename</span>
+    <span class="k">assert</span> <span class="n">w</span><span class="o">.</span><span class="n">lineno</span>
+</pre></div>
+</div>
+<p>Both the <a class="reference internal" href="../reference/reference.html#std-fixture-recwarn"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">recwarn</span></code></a> fixture and the <a class="reference internal" href="../reference/reference.html#pytest.warns" title="pytest.warns"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.warns()</span></code></a> context manager return the same interface for recorded
+warnings: a <a class="reference internal" href="../reference/reference.html#pytest.WarningsRecorder" title="_pytest.recwarn.WarningsRecorder"><code class="xref py py-class docutils literal notranslate"><span class="pre">WarningsRecorder</span></code></a> instance. To view the recorded warnings, you can
+iterate over this instance, call <code class="docutils literal notranslate"><span class="pre">len</span></code> on it to get the number of recorded
+warnings, or index into it to get a particular recorded warning.</p>
+</section>
+<section id="additional-use-cases-of-warnings-in-tests">
+<span id="warns-use-cases"></span><h2>Additional use cases of warnings in tests<a class="headerlink" href="#additional-use-cases-of-warnings-in-tests" title="Link to this heading">¶</a></h2>
+<p>Here are some use cases involving warnings that often come up in tests, and suggestions on how to deal with them:</p>
+<ul class="simple">
+<li><p>To ensure that <strong>at least one</strong> of the indicated warnings is issued, use:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_warning</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">warns</span><span class="p">((</span><span class="ne">RuntimeWarning</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)):</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To ensure that <strong>only</strong> certain warnings are issued, use:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_warning</span><span class="p">(</span><span class="n">recwarn</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">recwarn</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">user_warning</span> <span class="o">=</span> <span class="n">recwarn</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">user_warning</span><span class="o">.</span><span class="n">category</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To ensure that <strong>no</strong> warnings are emitted, use:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_warning</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To suppress warnings, use:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-failure-messages">
+<span id="id4"></span><h2>Custom failure messages<a class="headerlink" href="#custom-failure-messages" title="Link to this heading">¶</a></h2>
+<p>Recording warnings provides an opportunity to produce custom test
+failure messages for when no warnings are issued or other conditions
+are met.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">warns</span><span class="p">(</span><span class="ne">Warning</span><span class="p">)</span> <span class="k">as</span> <span class="n">record</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">record</span><span class="p">:</span>
+            <span class="n">pytest</span><span class="o">.</span><span class="n">fail</span><span class="p">(</span><span class="s2">&quot;Expected a warning!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If no warnings are issued when calling <code class="docutils literal notranslate"><span class="pre">f</span></code>, then <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">record</span></code> will
+evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>.  You can then call <a class="reference internal" href="../reference/reference.html#pytest.fail" title="pytest.fail"><code class="xref py py-func docutils literal notranslate"><span class="pre">pytest.fail()</span></code></a> with a
+custom error message.</p>
+</section>
+<section id="internal-pytest-warnings">
+<span id="internal-warnings"></span><h2>Internal pytest warnings<a class="headerlink" href="#internal-pytest-warnings" title="Link to this heading">¶</a></h2>
+<p>pytest may generate its own warnings in some situations, such as improper usage or deprecated features.</p>
+<p>For example, pytest will emit a warning if it encounters a class that matches <a class="reference internal" href="../reference/reference.html#confval-python_classes"><code class="xref std std-confval docutils literal notranslate"><span class="pre">python_classes</span></code></a> but also
+defines an <code class="docutils literal notranslate"><span class="pre">__init__</span></code> constructor, as this prevents the class from being instantiated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># content of test_pytest_warnings.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Test</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_foo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-pytest notranslate"><div class="highlight"><pre><span></span>$ pytest test_pytest_warnings.py -q
+
+<span class=" -Color -Color-Yellow">============================= warnings summary =============================</span>
+test_pytest_warnings.py:1
+  /home/sweet/project/test_pytest_warnings.py:1: PytestCollectionWarning: cannot collect test class &#39;Test&#39; because it has a __init__ constructor (from: test_pytest_warnings.py)
+    class Test:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+<span class=" -Color -Color-Bold -Color-Bold-Yellow">1 warning</span><span class=" -Color -Color-Yellow"> in 0.12s</span>
+</pre></div>
+</div>
+<p>These warnings might be filtered using the same builtin mechanisms used to filter other types of warnings.</p>
+<p>Please read our <a class="reference internal" href="../backwards-compatibility.html#backwards-compatibility"><span class="std std-ref">Backwards Compatibility Policy</span></a> to learn how we proceed about deprecating and eventually removing
+features.</p>
+<p>The full list of warnings is listed in <a class="reference internal" href="../reference/reference.html#warnings-ref"><span class="std std-ref">the reference documentation</span></a>.</p>
+</section>
+<section id="resource-warnings">
+<span id="id5"></span><h2>Resource Warnings<a class="headerlink" href="#resource-warnings" title="Link to this heading">¶</a></h2>
+<p>Additional information of the source of a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ResourceWarning" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ResourceWarning</span></code></a> can be obtained when captured by pytest if
+<a class="reference external" href="https://docs.python.org/3/library/tracemalloc.html#module-tracemalloc" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tracemalloc</span></code></a> module is enabled.</p>
+<p>One convenient way to enable <a class="reference external" href="https://docs.python.org/3/library/tracemalloc.html#module-tracemalloc" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tracemalloc</span></code></a> when running tests is to set the <span class="target" id="index-3"></span><a class="reference external" href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONTRACEMALLOC" title="(in Python v3.14)"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONTRACEMALLOC</span></code></a> to a large
+enough number of frames (say <code class="docutils literal notranslate"><span class="pre">20</span></code>, but that number is application dependent).</p>
+<p>For more information, consult the <a class="reference external" href="https://docs.python.org/3/library/devmode.html">Python Development Mode</a>
+section in the Python documentation.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="skipping.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">How to use skip and xfail to deal with tests that cannot succeed</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="capture-stdout-stderr.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">How to capture stdout/stderr output</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2015, holger krekel and pytest-dev team
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">How to capture warnings</a><ul>
+<li><a class="reference internal" href="#controlling-warnings">Controlling warnings</a></li>
+<li><a class="reference internal" href="#pytest-mark-filterwarnings"><code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.filterwarnings</span></code></a></li>
+<li><a class="reference internal" href="#disabling-warnings-summary">Disabling warnings summary</a></li>
+<li><a class="reference internal" href="#disabling-warning-capture-entirely">Disabling warning capture entirely</a></li>
+<li><a class="reference internal" href="#deprecationwarning-and-pendingdeprecationwarning">DeprecationWarning and PendingDeprecationWarning</a></li>
+<li><a class="reference internal" href="#ensuring-code-triggers-a-deprecation-warning">Ensuring code triggers a deprecation warning</a></li>
+<li><a class="reference internal" href="#warns">Asserting warnings with the warns function</a></li>
+<li><a class="reference internal" href="#recwarn">Recording warnings</a></li>
+<li><a class="reference internal" href="#additional-use-cases-of-warnings-in-tests">Additional use cases of warnings in tests</a></li>
+<li><a class="reference internal" href="#custom-failure-messages">Custom failure messages</a></li>
+<li><a class="reference internal" href="#internal-pytest-warnings">Internal pytest warnings</a></li>
+<li><a class="reference internal" href="#resource-warnings">Resource Warnings</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=6e94e9f2"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    </body>
+</html>

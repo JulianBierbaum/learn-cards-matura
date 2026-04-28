@@ -1,0 +1,11 @@
+[
+    "-github.copilot.chat",
+    "ms-python.python",
+    "ms-pyright.pyright",
+    "ms-python.isort",
+    "formulahendry.code-runner",
+    "ecmel.vscode-html-css",
+    "bradlc.vscode-tailwindcss",
+    "tamasfe.even-better-toml",
+    "akamud.vscode-theme-onedark"
+]

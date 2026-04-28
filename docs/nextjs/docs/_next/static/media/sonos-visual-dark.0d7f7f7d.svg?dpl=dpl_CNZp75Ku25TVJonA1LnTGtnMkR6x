@@ -1,0 +1,21 @@
+<svg width="441" height="245" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <mask id="b" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="0" width="440" height="336">
+    <path fill="url(#a)" d="M1 0h440v336H1z"/>
+  </mask>
+  <g mask="url(#b)" stroke="#333333">
+    <circle cx="311.5" cy="-20.5" r="37"/>
+    <circle cx="311.5" cy="-20.5" r="57"/>
+    <circle cx="311.5" cy="-20.5" r="84"/>
+    <circle cx="311.5" cy="-20.5" r="116"/>
+    <circle cx="311.5" cy="-20.5" r="155"/>
+    <circle cx="311.5" cy="-20.5" r="199"/>
+  </g>
+  <defs>
+    <linearGradient id="a" x1="317.156" y1="7" x2="237.961" y2="169.705" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#333333"/>
+      <stop offset=".32" stop-color="#333333" stop-opacity=".9"/>
+      <stop offset=".845" stop-color="#333333" stop-opacity=".39"/>
+      <stop offset="1" stop-color="#333333" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

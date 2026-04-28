@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; }
+        .doc-card { transition: all 0.2s ease-in-out; }
+        .doc-card:hover { transform: translateY(-4px); border-color: #38bdf8; background-color: #1e293b; }
+    </style>
+</head>
+<body class="p-8 md:p-16">
+    <div class="max-w-5xl mx-auto">
+        <header class="mb-12 border-b border-slate-700 pb-8">
+            <h1 class="text-4xl font-bold text-sky-400 mb-2">Internal Documentation</h1>
+            <p class="text-slate-400 italic">"RDP 2025-26"</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="nav-grid">
+            <a href="/docs/fastapi/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">FastAPI</h3>
+                <p class="text-sm text-slate-400">Backend API logic and route definitions.</p>
+            </a>
+
+            <a href="/docs/nextjs/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">Next.js</h3>
+                <p class="text-sm text-slate-400">Frontend architecture and client-side components.</p>
+            </a>
+
+            <a href="/docs/sqlalchemy/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">SQLAlchemy</h3>
+                <p class="text-sm text-slate-400">ORM models and database relationship schema.</p>
+            </a>
+
+            <a href="/docs/alembic/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">Alembic</h3>
+                <p class="text-sm text-slate-400">Database migration history and versioning.</p>
+            </a>
+
+            <a href="/docs/plantuml/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">PlantUML</h3>
+                <p class="text-sm text-slate-400">System architecture and sequence diagrams.</p>
+            </a>
+
+            <a href="/docs/pytest/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">Pytest</h3>
+                <p class="text-sm text-slate-400">Testing suites and coverage reports.</p>
+            </a>
+            
+            <a href="/docs/pydantic/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">Pydantic</h3>
+                <p class="text-sm text-slate-400">Data validation and settings management.</p>
+            </a>
+
+            <a href="/docs/shadcn-ui/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">Shadcn UI</h3>
+                <p class="text-sm text-slate-400">Component library and design system tokens.</p>
+            </a>
+
+            <a href="/docs/axios/" class="doc-card block p-6 rounded-xl border border-slate-700 bg-slate-800/50">
+                <h3 class="text-xl font-semibold mb-2 text-white">Axios</h3>
+                <p class="text-sm text-slate-400">API fetching logic and interceptors.</p>
+            </a>
+        </div>
+        
+        <footer class="mt-16 text-slate-500 text-xs text-center">
+            MO - RDP 2025-26
+        </footer>
+    </div>
+</body>
+</html>

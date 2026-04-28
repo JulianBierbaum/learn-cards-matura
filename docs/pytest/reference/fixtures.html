@@ -1,0 +1,969 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../search.html"><link rel="next" title="Configuration" href="customize.html"><link rel="prev" title="API Reference" href="reference.html">
+        <link rel="canonical" href="https://docs.pytest.org/en/stable/reference/fixtures.html">
+        <link rel="prefetch" href="../_static/pytest1.png" as="image">
+
+    <link rel="shortcut icon" href="../_static/favicon.png"><!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Fixtures reference - pytest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments_pytest.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pytest-custom.css?v=eb7c59a4" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">pytest documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/pytest1.png" alt="Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Get Started</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../how-to/index.html">How-to guides</a><input aria-label="Toggle navigation of How-to guides" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/usage.html">How to invoke pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/assert.html">How to write and report assertions in tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/fixtures.html">How to use fixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/mark.html">How to mark test functions with attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/parametrize.html">How to parametrize fixtures and test functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/subtests.html">How to use subtests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/tmp_path.html">How to use temporary directories and files in tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/monkeypatch.html">How to monkeypatch/mock modules and environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/doctest.html">How to run doctests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/cache.html">How to re-run failed tests and maintain state between test runs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/failures.html">How to handle test failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/output.html">Managing pytest’s output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/logging.html">How to manage logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/capture-stdout-stderr.html">How to capture stdout/stderr output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/capture-warnings.html">How to capture warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/skipping.html">How to use skip and xfail to deal with tests that cannot succeed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/plugins.html">How to install and use plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/writing_plugins.html">Writing plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/writing_hook_functions.html">Writing hook functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/existingtestsuite.html">How to use pytest with an existing test suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/unittest.html">How to use <code class="docutils literal notranslate"><span class="pre">unittest</span></code>-based tests with pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/xunit_setup.html">How to implement xunit-style set-up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../how-to/bash-completion.html">How to set up bash completion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Reference guides</a><input aria-label="Toggle navigation of Reference guides" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="reference.html">API Reference</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Fixtures reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customize.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exit-codes.html">Exit codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugin_list.html">Pytest Plugin List</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../explanation/index.html">Explanation</a><input aria-label="Toggle navigation of Explanation" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/anatomy.html">Anatomy of a test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/fixtures.html">About fixtures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/goodpractices.html">Good Integration Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/pythonpath.html">pytest import mechanisms and <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>/<code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/types.html">Typing in pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/ci.html">CI Pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../explanation/flaky.html">Flaky tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../example/index.html">Examples and customization tricks</a><input aria-label="Toggle navigation of Examples and customization tricks" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../example/reportingdemo.html">Demo of Python failure reports with pytest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/simple.html">Basic patterns and examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/parametrize.html">Parametrizing tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/markers.html">Working with custom markers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/special.html">A session-fixture which can look at all collected tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/pythoncollection.html">Changing standard (Python) test discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/nonpython.html">Working with non-python tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example/customdirectory.html">Using a custom directory collector</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About the project</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backwards-compatibility.html">Backwards Compatibility Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backwards-compatibility.html#history">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../backwards-compatibility.html#python-version-support">Python version support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsor.html">Sponsor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tidelift.html">pytest for enterprise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact channels</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Useful links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/pytest/">pytest @ PyPI</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pytest-dev/pytest/">pytest @ GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pytest-dev/pytest/issues">Issue Tracker</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://media.readthedocs.org/pdf/pytest/latest/pytest.pdf">PDF Documentation</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="fixtures-reference">
+<span id="id1"></span><span id="pytest-fixture"></span><span id="fixtures"></span><span id="fixture"></span><span id="reference-fixtures"></span><h1>Fixtures reference<a class="headerlink" href="#fixtures-reference" title="Link to this heading">¶</a></h1>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../explanation/fixtures.html#about-fixtures"><span class="std std-ref">About fixtures</span></a></p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../how-to/fixtures.html#how-to-fixtures"><span class="std std-ref">How to use fixtures</span></a></p>
+</div>
+<section id="built-in-fixtures">
+<h2>Built-in fixtures<a class="headerlink" href="#built-in-fixtures" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="reference.html#fixtures-api"><span class="std std-ref">Fixtures</span></a> are defined using the <a class="reference internal" href="reference.html#pytest-fixture-api"><span class="std std-ref">&#64;pytest.fixture</span></a> decorator. Pytest has several useful built-in fixtures:</p>
+<blockquote>
+<div><dl class="simple">
+<dt><a class="reference internal" href="reference.html#std-fixture-capfd"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">capfd</span></code></a></dt><dd><p>Capture, as text, output to file descriptors <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-capfdbinary"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">capfdbinary</span></code></a></dt><dd><p>Capture, as bytes, output to file descriptors <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-caplog"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">caplog</span></code></a></dt><dd><p>Control logging and access log entries.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-capsys"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">capsys</span></code></a></dt><dd><p>Capture, as text, output to <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-capteesys"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">capteesys</span></code></a></dt><dd><p>Capture in the same manner as <a class="reference internal" href="reference.html#std-fixture-capsys"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">capsys</span></code></a>, but also pass text
+through according to <a class="reference internal" href="reference.html#cmdoption-capture"><code class="xref std std-option docutils literal notranslate"><span class="pre">--capture</span></code></a>.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-capsysbinary"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">capsysbinary</span></code></a></dt><dd><p>Capture, as bytes, output to <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-cache"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">cache</span></code></a></dt><dd><p>Store and retrieve values across pytest runs.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-doctest_namespace"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">doctest_namespace</span></code></a></dt><dd><p>Provide a dict injected into the doctests namespace.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-monkeypatch"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">monkeypatch</span></code></a></dt><dd><p>Temporarily modify classes, functions, dictionaries,
+<code class="docutils literal notranslate"><span class="pre">os.environ</span></code>, and other objects.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-pytestconfig"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">pytestconfig</span></code></a></dt><dd><p>Access to configuration values, pluginmanager and plugin hooks.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-subtests"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">subtests</span></code></a></dt><dd><p>Enable declaring subtests inside test functions.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-record_property"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">record_property</span></code></a></dt><dd><p>Add extra properties to the test.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-record_testsuite_property"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">record_testsuite_property</span></code></a></dt><dd><p>Add extra properties to the test suite.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-recwarn"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">recwarn</span></code></a></dt><dd><p>Record warnings emitted by test functions.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-request"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">request</span></code></a></dt><dd><p>Provide information on the executing test function.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-testdir"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">testdir</span></code></a></dt><dd><p>Provide a temporary test directory to aid in running, and
+testing, pytest plugins.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-tmp_path"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">tmp_path</span></code></a></dt><dd><p>Provide a <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a> object to a temporary directory
+which is unique to each test function.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-tmp_path_factory"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">tmp_path_factory</span></code></a></dt><dd><p>Make session-scoped temporary directories and return
+<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a> objects.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-tmpdir"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">tmpdir</span></code></a></dt><dd><p>Provide a <a class="reference external" href="https://py.readthedocs.io/en/latest/path.html">py.path.local</a> object to a temporary
+directory which is unique to each test function;
+replaced by <a class="reference internal" href="reference.html#std-fixture-tmp_path"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">tmp_path</span></code></a>.</p>
+</dd>
+<dt><a class="reference internal" href="reference.html#std-fixture-tmpdir_factory"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">tmpdir_factory</span></code></a></dt><dd><p>Make session-scoped temporary directories and return
+<code class="docutils literal notranslate"><span class="pre">py.path.local</span></code> objects;
+replaced by <a class="reference internal" href="reference.html#std-fixture-tmp_path_factory"><code class="xref std std-fixture docutils literal notranslate"><span class="pre">tmp_path_factory</span></code></a>.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="fixture-availability">
+<span id="conftest"></span><span id="conftest-py"></span><h2>Fixture availability<a class="headerlink" href="#fixture-availability" title="Link to this heading">¶</a></h2>
+<p>Fixture availability is determined from the perspective of the test. A fixture
+is only available for tests to request if they are in the scope that fixture is
+defined in. If a fixture is defined inside a class, it can only be requested by
+tests inside that class. But if a fixture is defined inside the global scope of
+the module, then every test in that module, even if it’s defined inside a class,
+can request it.</p>
+<p>Similarly, a test can also only be affected by an autouse fixture if that test
+is in the same scope that autouse fixture is defined in (see
+<a class="reference internal" href="#autouse-order"><span class="std std-ref">Autouse fixtures are executed first within their scope</span></a>).</p>
+<p>A fixture can also request any other fixture, no matter where it’s defined, so
+long as the test requesting them can see all fixtures involved.</p>
+<p>For example, here’s a test file with a fixture (<code class="docutils literal notranslate"><span class="pre">outer</span></code>) that requests a
+fixture (<code class="docutils literal notranslate"><span class="pre">inner</span></code>) from a scope it wasn’t defined in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">inner</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestOne</span><span class="p">:</span>
+    <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;one&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">outer</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;outer&quot;</span><span class="p">]</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestTwo</span><span class="p">:</span>
+    <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;two&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">outer</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;outer&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>From the tests’ perspectives, they have no problem seeing each of the fixtures
+they’re dependent on:</p>
+<img alt="../_images/test_fixtures_request_different_scope.svg" class="align-center" src="../_images/test_fixtures_request_different_scope.svg" />
+<p>So when they run, <code class="docutils literal notranslate"><span class="pre">outer</span></code> will have no problem finding <code class="docutils literal notranslate"><span class="pre">inner</span></code>, because
+pytest searched from the tests’ perspectives.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The scope a fixture is defined in has no bearing on the order it will be
+instantiated in: the order is mandated by the logic described
+<a class="reference internal" href="#fixture-order"><span class="std std-ref">here</span></a>.</p>
+</div>
+<section id="conftest-py-sharing-fixtures-across-multiple-files">
+<h3><code class="docutils literal notranslate"><span class="pre">conftest.py</span></code>: sharing fixtures across multiple files<a class="headerlink" href="#conftest-py-sharing-fixtures-across-multiple-files" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> file serves as a means of providing fixtures for an entire
+directory. Fixtures defined in a <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> can be used by any test
+in that package without needing to import them (pytest will automatically
+discover them).</p>
+<p>You can have multiple nested directories/packages containing your tests, and
+each directory can have its own <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> with its own fixtures, adding on
+to the ones provided by the <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> files in parent directories.</p>
+<p>For example, given a test file structure like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tests</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+
+    <span class="n">conftest</span><span class="o">.</span><span class="n">py</span>
+        <span class="c1"># content of tests/conftest.py</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+        <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">top</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">innermost</span><span class="p">):</span>
+            <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+
+    <span class="n">test_top</span><span class="o">.</span><span class="n">py</span>
+        <span class="c1"># content of tests/test_top.py</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+        <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">innermost</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+            <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;innermost top&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">top</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;innermost top&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">]</span>
+
+    <span class="n">subpackage</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+
+        <span class="n">conftest</span><span class="o">.</span><span class="n">py</span>
+            <span class="c1"># content of tests/subpackage/conftest.py</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+            <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">mid</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+                <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mid subpackage&quot;</span><span class="p">)</span>
+
+        <span class="n">test_subpackage</span><span class="o">.</span><span class="n">py</span>
+            <span class="c1"># content of tests/subpackage/test_subpackage.py</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+            <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">innermost</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">mid</span><span class="p">):</span>
+                <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;innermost subpackage&quot;</span><span class="p">)</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">top</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;mid subpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;innermost subpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;top&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The boundaries of the scopes can be visualized like this:</p>
+<img alt="../_images/fixture_availability.svg" class="align-center" src="../_images/fixture_availability.svg" />
+<p>The directories become their own sort of scope where fixtures that are defined
+in a <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> file in that directory become available for that whole
+scope.</p>
+<p>Tests are allowed to search upward (stepping outside a circle) for fixtures, but
+can never go down (stepping inside a circle) to continue their search. So
+<code class="docutils literal notranslate"><span class="pre">tests/subpackage/test_subpackage.py::test_order</span></code> would be able to find the
+<code class="docutils literal notranslate"><span class="pre">innermost</span></code> fixture defined in <code class="docutils literal notranslate"><span class="pre">tests/subpackage/test_subpackage.py</span></code>, but
+the one defined in <code class="docutils literal notranslate"><span class="pre">tests/test_top.py</span></code> would be unavailable to it because it
+would have to step down a level (step inside a circle) to find it.</p>
+<p>The first fixture the test finds is the one that will be used, so
+<a class="reference internal" href="../how-to/fixtures.html#override-fixtures"><span class="std std-ref">fixtures can be overridden</span></a> if you need to change or
+extend what one does for a particular scope.</p>
+<p>You can also use the <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> file to implement
+<a class="reference internal" href="../how-to/writing_plugins.html#conftest-py-plugins"><span class="std std-ref">local per-directory plugins</span></a>.</p>
+</section>
+<section id="fixtures-from-third-party-plugins">
+<h3>Fixtures from third-party plugins<a class="headerlink" href="#fixtures-from-third-party-plugins" title="Link to this heading">¶</a></h3>
+<p>Fixtures don’t have to be defined in this structure to be available for tests,
+though. They can also be provided by third-party plugins that are installed, and
+this is how many pytest plugins operate. As long as those plugins are installed,
+the fixtures they provide can be requested from anywhere in your test suite.</p>
+<p>Because they’re provided from outside the structure of your test suite,
+third-party plugins don’t really provide a scope like <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> files and
+the directories in your test suite do. As a result, pytest will search for
+fixtures stepping out through scopes as explained previously, only reaching
+fixtures defined in plugins <em>last</em>.</p>
+<p>For example, given the following file structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tests</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+
+    <span class="n">conftest</span><span class="o">.</span><span class="n">py</span>
+        <span class="c1"># content of tests/conftest.py</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+        <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">subpackage</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+
+        <span class="n">conftest</span><span class="o">.</span><span class="n">py</span>
+            <span class="c1"># content of tests/subpackage/conftest.py</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+            <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">mid</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">b_fix</span><span class="p">):</span>
+                <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;mid subpackage&quot;</span><span class="p">)</span>
+
+        <span class="n">test_subpackage</span><span class="o">.</span><span class="n">py</span>
+            <span class="c1"># content of tests/subpackage/test_subpackage.py</span>
+            <span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+            <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">a_fix</span><span class="p">):</span>
+                <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;inner subpackage&quot;</span><span class="p">)</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">inner</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;b_fix&quot;</span><span class="p">,</span> <span class="s2">&quot;mid subpackage&quot;</span><span class="p">,</span> <span class="s2">&quot;a_fix&quot;</span><span class="p">,</span> <span class="s2">&quot;inner subpackage&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">plugin_a</span></code> is installed and provides the fixture <code class="docutils literal notranslate"><span class="pre">a_fix</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">plugin_b</span></code> is installed and provides the fixture <code class="docutils literal notranslate"><span class="pre">b_fix</span></code>, then this is what
+the test’s search for fixtures would look like:</p>
+<img alt="../_images/fixture_availability_plugins.svg" class="align-center" src="../_images/fixture_availability_plugins.svg" />
+<p>pytest will only search for <code class="docutils literal notranslate"><span class="pre">a_fix</span></code> and <code class="docutils literal notranslate"><span class="pre">b_fix</span></code> in the plugins after
+searching for them first in the scopes inside <code class="docutils literal notranslate"><span class="pre">tests/</span></code>.</p>
+</section>
+</section>
+<section id="fixture-instantiation-order">
+<span id="fixture-order"></span><h2>Fixture instantiation order<a class="headerlink" href="#fixture-instantiation-order" title="Link to this heading">¶</a></h2>
+<p>When pytest wants to execute a test, once it knows what fixtures will be
+executed, it has to figure out the order they’ll be executed in. To do this, it
+considers 3 factors:</p>
+<ol class="arabic simple">
+<li><p>scope</p></li>
+<li><p>dependencies</p></li>
+<li><p>autouse</p></li>
+</ol>
+<p>Names of fixtures or tests, where they’re defined, the order they’re defined in,
+and the order fixtures are requested in have no bearing on execution order
+beyond coincidence. While pytest will try to make sure coincidences like these
+stay consistent from run to run, it’s not something that should be depended on.
+If you want to control the order, it’s safest to rely on these 3 things and make
+sure dependencies are clearly established.</p>
+<section id="higher-scoped-fixtures-are-executed-first">
+<h3>Higher-scoped fixtures are executed first<a class="headerlink" href="#higher-scoped-fixtures-are-executed-first" title="Link to this heading">¶</a></h3>
+<p>Within a function request for fixtures, those of higher-scopes (such as
+<code class="docutils literal notranslate"><span class="pre">session</span></code>) are executed before lower-scoped fixtures (such as <code class="docutils literal notranslate"><span class="pre">function</span></code> or
+<code class="docutils literal notranslate"><span class="pre">class</span></code>).</p>
+<p>Here’s an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;session&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;function&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cls</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;class&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mod</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;module&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;package&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pack</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;package&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;session&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sess</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;session&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestClass</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">pack</span><span class="p">,</span> <span class="n">sess</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;session&quot;</span><span class="p">,</span> <span class="s2">&quot;package&quot;</span><span class="p">,</span> <span class="s2">&quot;module&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;function&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The test will pass because the larger scoped fixtures are executing first.</p>
+<p>The order breaks down to this:</p>
+<img alt="../_images/test_fixtures_order_scope.svg" class="align-center" src="../_images/test_fixtures_order_scope.svg" />
+</section>
+<section id="fixtures-of-the-same-order-execute-based-on-dependencies">
+<h3>Fixtures of the same order execute based on dependencies<a class="headerlink" href="#fixtures-of-the-same-order-execute-based-on-dependencies" title="Link to this heading">¶</a></h3>
+<p>When a fixture requests another fixture, the other fixture is executed first.
+So if fixture <code class="docutils literal notranslate"><span class="pre">a</span></code> requests fixture <code class="docutils literal notranslate"><span class="pre">b</span></code>, fixture <code class="docutils literal notranslate"><span class="pre">b</span></code> will execute first,
+because <code class="docutils literal notranslate"><span class="pre">a</span></code> depends on <code class="docutils literal notranslate"><span class="pre">b</span></code> and can’t operate without it. Even if <code class="docutils literal notranslate"><span class="pre">a</span></code>
+doesn’t need the result of <code class="docutils literal notranslate"><span class="pre">b</span></code>, it can still request <code class="docutils literal notranslate"><span class="pre">b</span></code> if it needs to make
+sure it is executed after <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">a</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">b</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">d</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">e</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If we map out what depends on what, we get something that looks like this:</p>
+<img alt="../_images/test_fixtures_order_dependencies.svg" class="align-center" src="../_images/test_fixtures_order_dependencies.svg" />
+<p>The rules provided by each fixture (as to what fixture(s) each one has to come
+after) are comprehensive enough that it can be flattened to this:</p>
+<img alt="../_images/test_fixtures_order_dependencies_flat.svg" class="align-center" src="../_images/test_fixtures_order_dependencies_flat.svg" />
+<p>Enough information has to be provided through these requests in order for pytest
+to be able to figure out a clear, linear chain of dependencies, and as a result,
+an order of operations for a given test. If there’s any ambiguity, and the order
+of operations can be interpreted more than one way, you should assume pytest
+could go with any one of those interpretations at any point.</p>
+<p>For example, if <code class="docutils literal notranslate"><span class="pre">d</span></code> didn’t request <code class="docutils literal notranslate"><span class="pre">c</span></code>, i.e.the graph would look like this:</p>
+<img alt="../_images/test_fixtures_order_dependencies_unclear.svg" class="align-center" src="../_images/test_fixtures_order_dependencies_unclear.svg" />
+<p>Because nothing requested <code class="docutils literal notranslate"><span class="pre">c</span></code> other than <code class="docutils literal notranslate"><span class="pre">g</span></code>, and <code class="docutils literal notranslate"><span class="pre">g</span></code> also requests <code class="docutils literal notranslate"><span class="pre">f</span></code>,
+it’s now unclear if <code class="docutils literal notranslate"><span class="pre">c</span></code> should go before/after <code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">e</span></code>, or <code class="docutils literal notranslate"><span class="pre">d</span></code>. The
+only rules that were set for <code class="docutils literal notranslate"><span class="pre">c</span></code> is that it must execute after <code class="docutils literal notranslate"><span class="pre">b</span></code> and
+before <code class="docutils literal notranslate"><span class="pre">g</span></code>.</p>
+<p>pytest doesn’t know where <code class="docutils literal notranslate"><span class="pre">c</span></code> should go in the case, so it should be assumed
+that it could go anywhere between <code class="docutils literal notranslate"><span class="pre">g</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>This isn’t necessarily bad, but it’s something to keep in mind. If the order
+they execute in could affect the behavior a test is targeting, or could
+otherwise influence the result of a test, then the order should be defined
+explicitly in a way that allows pytest to linearize/”flatten” that order.</p>
+</section>
+<section id="autouse-fixtures-are-executed-first-within-their-scope">
+<span id="autouse-order"></span><h3>Autouse fixtures are executed first within their scope<a class="headerlink" href="#autouse-fixtures-are-executed-first-within-their-scope" title="Link to this heading">¶</a></h3>
+<p>Autouse fixtures are assumed to apply to every test that could reference them,
+so they are executed before other fixtures in that scope. Fixtures that are
+requested by autouse fixtures effectively become autouse fixtures themselves for
+the tests that the real autouse fixture applies to.</p>
+<p>So if fixture <code class="docutils literal notranslate"><span class="pre">a</span></code> is autouse and fixture <code class="docutils literal notranslate"><span class="pre">b</span></code> is not, but fixture <code class="docutils literal notranslate"><span class="pre">a</span></code>
+requests fixture <code class="docutils literal notranslate"><span class="pre">b</span></code>, then fixture <code class="docutils literal notranslate"><span class="pre">b</span></code> will effectively be an autouse
+fixture as well, but only for the tests that <code class="docutils literal notranslate"><span class="pre">a</span></code> applies to.</p>
+<p>In the last example, the graph became unclear if <code class="docutils literal notranslate"><span class="pre">d</span></code> didn’t request <code class="docutils literal notranslate"><span class="pre">c</span></code>. But
+if <code class="docutils literal notranslate"><span class="pre">c</span></code> was autouse, then <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span></code> would effectively also be autouse
+because <code class="docutils literal notranslate"><span class="pre">c</span></code> depends on them. As a result, they would all be shifted above
+non-autouse fixtures within that scope.</p>
+<p>So if the test file looked like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">a</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">b</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">d</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">e</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_order_and_g</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>the graph would look like this:</p>
+<img alt="../_images/test_fixtures_order_autouse.svg" class="align-center" src="../_images/test_fixtures_order_autouse.svg" />
+<p>Because <code class="docutils literal notranslate"><span class="pre">c</span></code> can now be put above <code class="docutils literal notranslate"><span class="pre">d</span></code> in the graph, pytest can once again
+linearize the graph to this:</p>
+<img alt="../_images/test_fixtures_order_autouse_flat.svg" class="align-center" src="../_images/test_fixtures_order_autouse_flat.svg" />
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">c</span></code> makes <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span></code> effectively autouse fixtures as
+well.</p>
+<p>Be careful with autouse, though, as an autouse fixture will automatically
+execute for every test that can reach it, even if they don’t request it. For
+example, consider this file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">c1</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c1&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">c2</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c2&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;class&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">c3</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">c1</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c3&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestClassWithC1Request</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c3</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;c1&quot;</span><span class="p">,</span> <span class="s2">&quot;c3&quot;</span><span class="p">]</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestClassWithoutC1Request</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;c1&quot;</span><span class="p">,</span> <span class="s2">&quot;c2&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Even though nothing in <code class="docutils literal notranslate"><span class="pre">TestClassWithoutC1Request</span></code> is requesting <code class="docutils literal notranslate"><span class="pre">c1</span></code>, it still
+is executed for the tests inside it anyway:</p>
+<img alt="../_images/test_fixtures_order_autouse_multiple_scopes.svg" class="align-center" src="../_images/test_fixtures_order_autouse_multiple_scopes.svg" />
+<p>But just because one autouse fixture requested a non-autouse fixture, that
+doesn’t mean the non-autouse fixture becomes an autouse fixture for all contexts
+that it can apply to. It only effectively becomes an autouse fixture for the
+contexts the real autouse fixture (the one that requested the non-autouse
+fixture) can apply to.</p>
+<p>For example, take a look at this test file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">order</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[]</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">c1</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c1&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">c2</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c2&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestClassWithAutouse</span><span class="p">:</span>
+    <span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">c3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">c2</span><span class="p">):</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;c3&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_req</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">c1</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;c2&quot;</span><span class="p">,</span> <span class="s2">&quot;c3&quot;</span><span class="p">,</span> <span class="s2">&quot;c1&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_no_req</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;c2&quot;</span><span class="p">,</span> <span class="s2">&quot;c3&quot;</span><span class="p">]</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TestClassWithoutAutouse</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_req</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">c1</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;c1&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_no_req</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">order</span> <span class="o">==</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>It would break down to something like this:</p>
+<img alt="../_images/test_fixtures_order_autouse_temp_effects.svg" class="align-center" src="../_images/test_fixtures_order_autouse_temp_effects.svg" />
+<p>For <code class="docutils literal notranslate"><span class="pre">test_req</span></code> and <code class="docutils literal notranslate"><span class="pre">test_no_req</span></code> inside <code class="docutils literal notranslate"><span class="pre">TestClassWithAutouse</span></code>, <code class="docutils literal notranslate"><span class="pre">c3</span></code>
+effectively makes <code class="docutils literal notranslate"><span class="pre">c2</span></code> an autouse fixture, which is why <code class="docutils literal notranslate"><span class="pre">c2</span></code> and <code class="docutils literal notranslate"><span class="pre">c3</span></code> are
+executed for both tests, despite not being requested, and why <code class="docutils literal notranslate"><span class="pre">c2</span></code> and <code class="docutils literal notranslate"><span class="pre">c3</span></code>
+are executed before <code class="docutils literal notranslate"><span class="pre">c1</span></code> for <code class="docutils literal notranslate"><span class="pre">test_req</span></code>.</p>
+<p>If this made <code class="docutils literal notranslate"><span class="pre">c2</span></code> an <em>actual</em> autouse fixture, then <code class="docutils literal notranslate"><span class="pre">c2</span></code> would also execute
+for the tests inside <code class="docutils literal notranslate"><span class="pre">TestClassWithoutAutouse</span></code>, since they can reference
+<code class="docutils literal notranslate"><span class="pre">c2</span></code> if they wanted to. But it doesn’t, because from the perspective of the
+<code class="docutils literal notranslate"><span class="pre">TestClassWithoutAutouse</span></code> tests, <code class="docutils literal notranslate"><span class="pre">c2</span></code> isn’t an autouse fixture, since they
+can’t see <code class="docutils literal notranslate"><span class="pre">c3</span></code>.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="customize.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Configuration</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="reference.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">API Reference</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2015, holger krekel and pytest-dev team
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Fixtures reference</a><ul>
+<li><a class="reference internal" href="#built-in-fixtures">Built-in fixtures</a></li>
+<li><a class="reference internal" href="#fixture-availability">Fixture availability</a><ul>
+<li><a class="reference internal" href="#conftest-py-sharing-fixtures-across-multiple-files"><code class="docutils literal notranslate"><span class="pre">conftest.py</span></code>: sharing fixtures across multiple files</a></li>
+<li><a class="reference internal" href="#fixtures-from-third-party-plugins">Fixtures from third-party plugins</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fixture-instantiation-order">Fixture instantiation order</a><ul>
+<li><a class="reference internal" href="#higher-scoped-fixtures-are-executed-first">Higher-scoped fixtures are executed first</a></li>
+<li><a class="reference internal" href="#fixtures-of-the-same-order-execute-based-on-dependencies">Fixtures of the same order execute based on dependencies</a></li>
+<li><a class="reference internal" href="#autouse-fixtures-are-executed-first-within-their-scope">Autouse fixtures are executed first within their scope</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=6e94e9f2"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+User-Agent: *
+Disallow: /plantuml/txt/
+Disallow: /plantuml/svg/
+Disallow: /plantuml/map/
+Disallow: /plantuml/uml/
+Disallow: /plantuml/img/

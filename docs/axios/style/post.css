@@ -1,0 +1,40 @@
+li.sponsor-card {
+  /*  &[data-has-logo=true] .caption {
+      display: none;
+    }*/
+  width: max(20%, 170px);
+}
+li.sponsor-card[data-tier=gold] {
+  width: max(25%, 220px);
+}
+li.sponsor-card[data-tier=platinum] {
+  width: max(30%, 250px);
+}
+
+.body table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.body table, .body th, .body td {
+  border: 1px solid #1f1c24;
+  padding: 3px;
+}
+
+blockquote {
+  border-left: 5px solid var(--primary-color);
+  margin-left: 1rem;
+}
+blockquote > p {
+  padding: 10px;
+}
+
+@media (max-width: 480px) {
+  li.sponsor-card {
+    width: calc(100%);
+  }
+}
+@media (max-width: 400px) {
+  li.sponsor-card a:has(img) .caption {
+    display: none;
+  }
+}
