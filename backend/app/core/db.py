@@ -11,7 +11,6 @@ from app.crud.user import create_admin, create_user
 from app.models.user import User
 
 
-
 def init_db(session: Session) -> None:
     """
     Initialize the database by creating tables and a superuser if it doesn't exist.
@@ -23,10 +22,6 @@ def init_db(session: Session) -> None:
     Base.metadata.create_all(bind=engine)
 
     seed_users(session=session)
-    
-
-
-    
 
 
 def seed_users(session: Session) -> None:
@@ -49,7 +44,7 @@ def seed_users(session: Session) -> None:
         )
         _ = create_admin(db=session, user=user_in)
 
-    #Create regular user
+    # Create regular user
     user = session.execute(
         select(User).where(User.email == settings.FIRST_USER_EMAIL)
     ).first()
@@ -61,5 +56,3 @@ def seed_users(session: Session) -> None:
             password=settings.FIRST_USER_PASSWORD,
         )
         _ = create_user(db=session, user=user_in)
-
-

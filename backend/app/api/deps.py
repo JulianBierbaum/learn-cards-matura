@@ -104,4 +104,3 @@ def get_current_active_admin(current_user: CurrentUser) -> User:
             detail="The user doesn't have enough privileges",
         )
     return current_user
-

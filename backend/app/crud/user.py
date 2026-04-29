@@ -41,9 +41,8 @@ def create_admin(*, db: Session, user: UserCreate):
 
 def get_user_by_email(*, db: Session, email: str):
     db_user = db.query(User).filter(User.email == email).first()
- 
+
     if not db_user:
         return None
 
     return db_user
-

@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship, Mapped, mapped_column
 from app.database.session import Base
 from app.models.enum import LearnState
 
+
 class Card(Base):
     __tablename__ = "cards"
 
@@ -15,4 +16,4 @@ class Card(Base):
     tags: Mapped[Optional[List[str]]] = mapped_column(JSON, nullable=True)
     learnState: Mapped[LearnState] = mapped_column(pgEnum(LearnState), nullable=False)
 
-    user: Mapped["User"] = relationship(back_populates="cards")
+    user = relationship("User", back_populates="cards")
