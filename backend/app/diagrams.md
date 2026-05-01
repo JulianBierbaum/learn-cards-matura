@@ -52,7 +52,7 @@ class User {
   User create_user()
   User update_user()
   User get_user()
-  List[User] get_users_paged()
+  List[User] get_users()
   User get_user_by_email()
 }
 
@@ -69,7 +69,7 @@ class Card {
   Card update_card()
   Card delete_card()
   Card get_card()
-  List[Card] get_cards_paged()
+  List[Card] get_cards()
   Card get_card_by_name()
 }
 

@@ -12,7 +12,7 @@ class UserCreate(BaseModel):
 class UserUpdate(BaseModel):
     name: Optional[str] = Field(None, min_length=1, max_length=15)
     email: Optional[EmailStr] = Field(None, min_length=7, max_length=50)
-    is_admin: Optional[bool] = False
+    is_admin: Optional[bool] = Field(None)
     password: Optional[str] = Field(None, min_length=1, max_length=50)
 
 

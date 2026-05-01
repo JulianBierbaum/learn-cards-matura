@@ -9,6 +9,10 @@ class CardBase(BaseModel):
     tags: Optional[List[str]] = Field(None)
 
 
+class CardCreate(CardBase):
+    pass
+
+
 class CardUpdate(BaseModel):
     name: Optional[str] = Field(None, min_length=1, max_length=25)
     front: Optional[str] = Field(None, min_length=1, max_length=500)
