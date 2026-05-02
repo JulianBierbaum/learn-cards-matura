@@ -4,7 +4,7 @@ from typing import List
 
 from app.models.card import Card
 from app.schemas.card import CardCreate, CardUpdate
-from backend.app.exceptions.card import CardDatabaseException, MissingCardException
+from app.exceptions.card import CardDatabaseException, MissingCardException
 
 
 def create_card(*, db: Session, card: CardCreate, user_id: int):
@@ -13,6 +13,7 @@ def create_card(*, db: Session, card: CardCreate, user_id: int):
         front=card.front,
         back=card.back,
         tags=card.tags,
+        learnState=card.learnState,
         user_id=user_id,
     )
 

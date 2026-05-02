@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional
+from app.models.enum import LearnState
 
 
 class CardBase(BaseModel):
@@ -7,6 +8,7 @@ class CardBase(BaseModel):
     front: str = Field(..., min_length=1, max_length=500)
     back: str = Field(..., min_length=1, max_length=500)
     tags: Optional[List[str]] = Field(None)
+    learnState: LearnState = Field(...)
 
 
 class CardCreate(CardBase):
@@ -18,6 +20,7 @@ class CardUpdate(BaseModel):
     front: Optional[str] = Field(None, min_length=1, max_length=500)
     back: Optional[str] = Field(None, min_length=1, max_length=500)
     tags: Optional[List[str]] = Field(None)
+    learnState: Optional[LearnState] = Field(None)
 
 
 class Card(CardBase):

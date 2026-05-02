@@ -33397,3 +33397,55 @@ postgresql+psycopg://postgres:***@db:5432/appdb
 INFO:     Started server process [475]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
+INFO     Using path app/main.py                                                 
+INFO     Resolved absolute path /app/app/main.py                                
+INFO     Searching for package file structure from directories with __init__.py 
+         files                                                                  
+INFO     Importing from /app                                                    
+                                                                                
+ ╭─ Python package file structure ─╮                                            
+ │                                 │                                            
+ │  📁 app                         │                                            
+ │  ├── 🐍 __init__.py             │                                            
+ │  └── 🐍 main.py                 │                                            
+ │                                 │                                            
+ ╰─────────────────────────────────╯                                            
+                                                                                
+INFO     Importing module app.main                                              
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO     Found importable FastAPI app                                           
+                                                                                
+ ╭── Importable FastAPI app ──╮                                                 
+ │                            │                                                 
+ │  from app.main import app  │                                                 
+ │                            │                                                 
+ ╰────────────────────────────╯                                                 
+                                                                                
+INFO     Using import string app.main:app                                       
+                                                                                
+ ╭────────── FastAPI CLI - Development mode ───────────╮                        
+ │                                                     │                        
+ │  Serving at: http://0.0.0.0:8000                    │                        
+ │                                                     │                        
+ │  API docs: http://0.0.0.0:8000/docs                 │                        
+ │                                                     │                        
+ │  Running in development mode, for production use:   │                        
+ │                                                     │                        
+ │  fastapi run                                        │                        
+ │                                                     │                        
+ ╰─────────────────────────────────────────────────────╯                        
+                                                                                
+INFO:     Will watch for changes in these directories: ['/app']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1] using WatchFiles
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [8]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [8]
+INFO:     Stopping reloader process [1]
