@@ -33449,3 +33449,2883 @@ INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
 INFO:     Finished server process [8]
 INFO:     Stopping reloader process [1]
+INFO     Using path app/main.py                                                 
+INFO     Resolved absolute path /app/app/main.py                                
+INFO     Searching for package file structure from directories with __init__.py 
+         files                                                                  
+INFO     Importing from /app                                                    
+                                                                                
+ ╭─ Python package file structure ─╮                                            
+ │                                 │                                            
+ │  📁 app                         │                                            
+ │  ├── 🐍 __init__.py             │                                            
+ │  └── 🐍 main.py                 │                                            
+ │                                 │                                            
+ ╰─────────────────────────────────╯                                            
+                                                                                
+INFO     Importing module app.main                                              
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO     Found importable FastAPI app                                           
+                                                                                
+ ╭── Importable FastAPI app ──╮                                                 
+ │                            │                                                 
+ │  from app.main import app  │                                                 
+ │                            │                                                 
+ ╰────────────────────────────╯                                                 
+                                                                                
+INFO     Using import string app.main:app                                       
+                                                                                
+ ╭────────── FastAPI CLI - Development mode ───────────╮                        
+ │                                                     │                        
+ │  Serving at: http://0.0.0.0:8000                    │                        
+ │                                                     │                        
+ │  API docs: http://0.0.0.0:8000/docs                 │                        
+ │                                                     │                        
+ │  Running in development mode, for production use:   │                        
+ │                                                     │                        
+ │  fastapi run                                        │                        
+ │                                                     │                        
+ ╰─────────────────────────────────────────────────────╯                        
+                                                                                
+INFO:     Will watch for changes in these directories: ['/app']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1] using WatchFiles
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [9]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     172.18.0.5:44080 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.5:44080 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app/api/routes/user.py', 'app/api/routes/card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [11]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_user.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [12]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [12]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [13]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py', 'tests/crud/test_user.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [13]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [14]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [14]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [15]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [16]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [16]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [17]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [17]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [18]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [18]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [19]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [19]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [20]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [20]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [21]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [21]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [22]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [23]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [24]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [24]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [25]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [25]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [26]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [26]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [27]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [27]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [28]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [28]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [29]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [29]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [30]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [30]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [31]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [31]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [32]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [32]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [33]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [33]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [34]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [34]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [35]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [35]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [36]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [36]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [37]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [37]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [38]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [38]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [39]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [39]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [40]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [40]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [41]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [41]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [42]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [42]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [43]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [43]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [44]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [44]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [45]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [46]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [46]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [47]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [47]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [48]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [48]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [49]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [49]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [50]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [50]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [51]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [51]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [52]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [52]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [53]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [53]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [54]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [54]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [55]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [55]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [56]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [56]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [57]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [57]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [58]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [58]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [59]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [59]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [60]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [60]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [61]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [61]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [62]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [62]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [63]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [63]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [64]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [64]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [65]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [65]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [66]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [66]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [67]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [67]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [68]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [69]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [69]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [70]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [70]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [71]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [71]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [72]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [72]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [73]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [73]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [74]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [74]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [75]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [75]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [76]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [76]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [77]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [77]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [78]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [78]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [79]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [79]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [80]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [80]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [81]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [81]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [82]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/__init__.py', 'tests/crud/__init__.py', 'tests/api/__init__.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [82]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [83]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [83]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [84]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [84]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [85]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [85]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [86]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [86]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [87]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [88]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [89]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [89]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [90]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [90]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [91]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [92]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [92]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [93]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [93]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [94]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [94]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [95]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [95]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [96]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [96]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [97]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [97]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [98]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [98]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [99]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [99]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [100]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [100]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [101]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [101]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [102]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [102]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [103]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [103]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [104]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [104]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [105]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [105]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [106]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [106]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [107]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [107]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [108]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [108]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [109]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [109]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [110]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [110]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [111]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [111]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [112]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [112]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [113]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [113]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [114]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [114]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [115]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [115]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [116]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [116]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [117]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [117]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [118]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [118]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [119]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [119]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [120]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [120]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [121]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [121]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [122]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [122]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [123]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [123]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [124]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [124]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [125]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [125]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [126]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [126]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [127]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [127]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [128]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [128]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [129]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [129]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [130]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [130]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [131]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [131]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [132]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [132]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [133]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [133]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [134]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [134]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [135]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [135]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [136]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [136]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [137]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [137]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [138]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [138]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [139]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [139]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [140]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [140]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [141]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [141]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [142]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [142]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [143]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [143]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [144]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [144]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [145]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [145]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [146]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [146]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [147]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/schemas/user.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [147]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [148]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/schemas/user.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [148]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [149]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/schemas/user.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [149]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [150]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app/schemas/user.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [150]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [151]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [151]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [152]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [152]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [153]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [153]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [154]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [154]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [155]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [155]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [156]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [156]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [157]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [157]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [158]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [158]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [159]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [159]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [160]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [160]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [161]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [161]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [162]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [162]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [163]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [163]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [164]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [164]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [165]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [165]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [166]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [166]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [167]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [167]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [168]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [168]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [169]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [169]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [170]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [170]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [171]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [171]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [172]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [172]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [173]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [173]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [174]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_user.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [174]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [175]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [175]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [176]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [176]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [177]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [177]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [178]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [178]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [179]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/crud/test_user.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [179]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [180]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [180]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [181]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [181]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [182]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [182]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [183]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [183]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [184]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [184]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [185]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [185]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [186]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [186]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [187]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [187]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [188]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [188]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [189]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [189]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [190]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [190]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [191]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [191]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [192]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [192]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [193]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [193]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [194]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [194]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [195]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [195]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [196]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [196]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [197]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [197]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [198]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [198]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [199]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [199]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [200]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [200]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [201]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [201]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [202]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [202]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [203]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [203]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [204]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [204]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [205]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [205]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [206]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [206]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [207]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [207]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [208]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     172.18.0.5:45112 - "GET /card/ HTTP/1.1" 401 Unauthorized
+INFO:     172.18.0.5:37098 - "GET /card/ HTTP/1.1" 401 Unauthorized
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [208]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [210]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [210]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [211]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [211]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [212]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [212]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [213]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [213]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [214]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [214]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [215]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [215]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [216]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [216]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [217]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [217]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [218]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [218]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [219]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [219]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [220]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [220]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [221]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [221]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [222]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [222]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [223]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [223]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [224]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [224]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [225]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [225]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [226]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [226]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [227]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [227]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [228]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [228]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [229]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [229]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [230]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [230]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [231]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [231]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [232]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [232]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [233]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [233]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [234]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [234]
+postgresql+psycopg://postgres:***@db:5432/appdb
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [235]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [236]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [236]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [237]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [237]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [238]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [238]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [239]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [239]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [240]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [240]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [241]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [241]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [242]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [242]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [243]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [243]
+WARNING:  WatchFiles detected changes in 'tests/conftest.py'. Reloading...
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [245]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [245]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [246]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [246]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [247]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [247]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [248]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [248]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [249]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [249]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [250]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [250]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [251]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [251]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [252]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [252]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [253]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [253]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [254]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [254]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [255]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [255]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [256]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [256]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [257]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [257]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [258]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [258]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [259]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     172.18.0.5:53206 - "POST /login HTTP/1.1" 200 OK
+INFO:     172.18.0.5:53206 - "GET /card/ HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [259]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [261]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [261]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [262]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [262]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [263]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [263]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [264]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [264]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [265]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [265]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [266]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [266]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [267]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [267]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [268]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [268]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [269]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [269]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [270]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [270]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [271]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [271]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [272]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [272]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [273]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [273]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [274]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [274]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [275]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [275]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [276]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [276]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [277]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [277]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [278]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [278]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [279]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [279]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [280]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [280]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [281]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [281]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [282]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [282]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [283]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [283]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [284]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [284]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [285]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [285]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [286]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [286]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [287]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [287]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [288]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [288]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [289]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [289]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [290]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [290]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [291]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [291]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [292]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [292]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [293]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [293]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [294]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [294]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [295]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests/api/routes/test_card.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [295]
+postgresql+psycopg://postgres:***@db:5432/appdb
+"openapi_prefix" has been deprecated in favor of "root_path", which follows more closely the ASGI standard, is simpler, and more automatic. Check the docs at https://fastapi.tiangolo.com/advanced/sub-applications/
+INFO:     Started server process [296]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

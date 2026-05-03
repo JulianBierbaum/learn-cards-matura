@@ -10,6 +10,8 @@ from app.database.session import Base
 from app.main import app
 from app.api.deps import get_db, get_current_user
 from app.models.user import User
+from app.models.card import Card
+from app.models.enum import LearnState
 import shutil
 import os
 
@@ -86,3 +88,18 @@ def test_client(db):
     db.refresh(user)
     return user
 
+@pytest.fixture
+def test_card1(db, test_client):
+    card = Card(name="test_card_1", front="test", back="test", tags=["test1", "test2"], learnState=LearnState.DUE, user_id=test_client.id)
+    db.add(card)
+    db.commit()
+    db.refresh(card)
+    return card
+
+@pytest.fixture
+def test_card2(db, test_client):
+    card = Card(name="test_card_2", front="test", back="test", tags=["test2"], learnState=LearnState.DUE, user_id=test_client.id)
+    db.add(card)
+    db.commit()
+    db.refresh(card)
+    return card

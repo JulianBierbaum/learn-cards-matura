@@ -14,29 +14,44 @@ router = APIRouter(prefix="/user")
 def get_user(session: SessionDep, user_id: int):
     user = crud.get_user(db=session, user_id=user_id)
     if not user:
-        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="no user with this id")
+        raise HTTPException(
+            status_code=status.HTTP_204_NO_CONTENT, detail="no user with this id"
+        )
     return user
+
 
 @router.get("/email/{email}", response_model=User)
 def get_user_by_email(session: SessionDep, email: str):
     user = crud.get_user_by_email(db=session, email=email)
     if not user:
-        raise HTTPException(status_code=status.HTTP_200_HTTP_204_NO_CONTENT, detail="no user with this email")
+        raise HTTPException(
+            status_code=status.HTTP_200_HTTP_204_NO_CONTENT,
+            detail="no user with this email",
+        )
     return user
+
 
 @router.get("/", response_model=List[User])
 def get_users(session: SessionDep):
     return crud.get_users(db=session)
 
 
-@router.post("/", response_model=User, dependencies=[Depends(get_current_active_admin)], status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/",
+    response_model=User,
+    dependencies=[Depends(get_current_active_admin)],
+    status_code=status.HTTP_201_CREATED,
+)
 def create_user(session: SessionDep, user: UserCreate):
     if user.is_admin:
         return crud.create_admin(db=session, user=user)
     else:
         return crud.create_user(db=session, user=user)
 
-@router.put("/{user_id}", response_model=User, dependencies=[Depends(get_current_active_admin)])
+
+@router.put(
+    "/{user_id}", response_model=User, dependencies=[Depends(get_current_active_admin)]
+)
 def update_user(session: SessionDep, user_id: int, user: UserUpdate):
     try:
         return crud.update_user(db=session, user_id=user_id, user=user)
